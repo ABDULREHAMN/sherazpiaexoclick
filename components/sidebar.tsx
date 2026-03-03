@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { LayoutDashboard, BarChart2, Globe, CreditCard, Users, Shield, ChevronLeft, ChevronRight, Sliders } from "lucide-react"
+import { LayoutDashboard, BarChart2, Globe, CreditCard, Users, Shield, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -36,7 +36,6 @@ export function Sidebar({ isOpen = true }: SidebarProps) {
     { id: "payments", icon: CreditCard, label: "Payments", route: "/publisher/payments" },
     { id: "referral-program", icon: Users, label: "Referral Program", route: "/publisher/referral-program" },
     { id: "neverblock", icon: Shield, label: "NeverBlock", route: "/publisher/neverblock" },
-    { id: "config-manager", icon: Sliders, label: "Config Manager", route: "/publisher/config-manager" },
   ]
 
   const isActive = (route: string) => {
