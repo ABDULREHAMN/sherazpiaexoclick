@@ -136,8 +136,8 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       revenue: 23.22,
       impressions: 4532,
       clicks: 376,
-      ctr: 8.3,
-      ecpm: 5.12,
+      ctr: 0.0,
+      ecpm: 23.22,
     },
     this_month: { revenue: 135.99 },
     last_month: { revenue: 0.0 },
@@ -145,11 +145,11 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   statistics_report: {
     today: {
-      revenue: 0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0,
-      ecpm: 0,
+      revenue: 135.99,
+      impressions: 22138,
+      clicks: 1848,
+      ctr: 8.35,
+      ecpm: 6.15,
     },
   },
   payments: {
