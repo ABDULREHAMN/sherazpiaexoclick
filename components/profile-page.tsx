@@ -15,9 +15,9 @@ interface ProfilePageProps {
 }
 
 const ACCOUNT_STATISTICS = {
-  totalRevenue: 0.003,
-  totalImpressions: 10,
-  totalClicks: 1,
+  totalRevenue: 0.0,
+  totalImpressions: 0,
+  totalClicks: 0,
 } as const
 
 export function ProfilePage({ onBack }: ProfilePageProps) {
