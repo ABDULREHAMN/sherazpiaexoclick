@@ -47,7 +47,7 @@ export function KycDetailsModal({ isOpen, onClose }: KycDetailsModalProps) {
                   <FileText size={14} className="mr-1" />
                   Full Name
                 </div>
-                <div className="font-semibold">Sheeraz Pia</div>
+                <div className="font-semibold">Musa Ibrahim</div>
               </div>
 
               <div>

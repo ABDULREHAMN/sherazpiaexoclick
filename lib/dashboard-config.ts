@@ -118,15 +118,15 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     branding_locked: true,
   },
   publisher_profile: {
-    profile_name: "Sheeraz Pia",
+    profile_name: "Musa Ibrahim",
     username: "sheraazpia07",
     email: "sherazpia76eez332@gmail.com",
     account_status: "Approved",
     approval_date: "03-03-2026",
     join_date: "03-03-2026",
     publisher_site: {
-      site_url: "https://jstyler.com",
-      domain_display: "jstyler.com",
+      site_url: "https://jistler.com",
+      domain_display: "jistler.com",
       site_added_date: "03-03-2026",
     },
   },
@@ -205,11 +205,11 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     ],
   },
   recent_activity: [
-    { type: "Revenue Update", date: "27-02-2026", value: 26.0, impressions: 4323, clicks: 363, ecpm: 26.0, domain: "jstyler.com" },
-    { type: "Revenue Update", date: "28-02-2026", value: 27.22, impressions: 4375, clicks: 366, ecpm: 27.22, domain: "jstyler.com" },
-    { type: "Revenue Update", date: "01-03-2026", value: 29.33, impressions: 4428, clicks: 370, ecpm: 29.33, domain: "jstyler.com" },
-    { type: "Revenue Update", date: "02-03-2026", value: 30.22, impressions: 4480, clicks: 373, ecpm: 30.22, domain: "jstyler.com" },
-    { type: "Revenue Update", date: "03-03-2026", value: 23.22, impressions: 4532, clicks: 376, ecpm: 23.22, domain: "jstyler.com" },
+    { type: "Revenue Update", date: "27-02-2026", value: 26.0, impressions: 4323, clicks: 363, ecpm: 26.0, domain: "jistler.com" },
+    { type: "Revenue Update", date: "28-02-2026", value: 27.22, impressions: 4375, clicks: 366, ecpm: 27.22, domain: "jistler.com" },
+    { type: "Revenue Update", date: "01-03-2026", value: 29.33, impressions: 4428, clicks: 370, ecpm: 29.33, domain: "jistler.com" },
+    { type: "Revenue Update", date: "02-03-2026", value: 30.22, impressions: 4480, clicks: 373, ecpm: 30.22, domain: "jistler.com" },
+    { type: "Revenue Update", date: "03-03-2026", value: 23.22, impressions: 4532, clicks: 376, ecpm: 23.22, domain: "jistler.com" },
   ],
 }
 
