@@ -164,14 +164,30 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     last_withdrawal_amount: 0,
   },
   charts: {
-    revenue_chart: [{ date: "03-03-2026", value: 0.0 }],
-    impressions_chart: [{ date: "03-03-2026", value: 0.0 }],
-    clicks_chart: [{ date: "03-03-2026", value: 0.0 }],
-    ctr_chart: [{ date: "03-03-2026", value: 0.0 }],
-    ecpm_chart: [{ date: "03-03-2026", value: 0.0 }],
+    revenue_chart: [
+      { date: "03-03-2026", value: 0.0 },
+      { date: "04-02-2026", value: 0.0 },
+    ],
+    impressions_chart: [
+      { date: "03-03-2026", value: 0.0 },
+      { date: "04-02-2026", value: 0.0 },
+    ],
+    clicks_chart: [
+      { date: "03-03-2026", value: 0.0 },
+      { date: "04-02-2026", value: 0.0 },
+    ],
+    ctr_chart: [
+      { date: "03-03-2026", value: 0.0 },
+      { date: "04-02-2026", value: 0.0 },
+    ],
+    ecpm_chart: [
+      { date: "03-03-2026", value: 0.0 },
+      { date: "04-02-2026", value: 0.0 },
+    ],
   },
   recent_activity: [
     { type: "Revenue Update", date: "03-03-2026", value: 0.0 },
+    { type: "Revenue Update", date: "04-02-2026", value: 0.0 },
   ],
 }
 
