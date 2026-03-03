@@ -106,7 +106,7 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
   }))
 
   const latestActivity = {
-    date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
+    date: "Mar 3, 2026",
     revenue: config?.dashboard_data?.today?.revenue ?? 0,
     impressions: config?.dashboard_data?.today?.impressions ?? 0,
     clicks: config?.dashboard_data?.today?.clicks ?? 0,
@@ -236,7 +236,7 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     let filtered = [...data]
 
     // Apply date filter
-    const now = new Date("2026-01-12") // Using Jan 12 as reference date for filtering
+    const now = new Date("2026-03-03") // Using Mar 3 as reference date for filtering
     if (dateRange === 7) {
       const sevenDaysAgo = new Date(now)
       sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
@@ -412,7 +412,7 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   // Update analytics insights to use filtered hourly data
   const topCountryToday = React.useMemo(() => {
-    const todayData = filteredHourlyData.filter((d) => d.date === "Jan 16, 2026") // Using Jan 16, 2026 as today
+    const todayData = filteredHourlyData.filter((d) => d.date === "03-03-2026") // Using 03-03-2026 as today
     const countryRevenue = new Map<string, number>()
 
     todayData.forEach((item) => {
@@ -788,7 +788,7 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     }
 
     // Updated timestamp reference to Jan 12, 2026
-    const timestamp = new Date("2026-01-12").toISOString().split("T")[0]
+    const timestamp = new Date("2026-03-03").toISOString().split("T")[0]
     const rangeText = dashboardDateRange ? `_last${dashboardDateRange}days` : ""
 
     if (format === "csv") {

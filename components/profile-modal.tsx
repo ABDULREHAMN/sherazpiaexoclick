@@ -21,7 +21,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
     company: "Fancy Diamond Chain",
     phone: "",
     website: "https://fancydiamondchain.com",
-    joinDate: "03 March 2026",
+    joinDate: "03-03-2026",
     accountType: "Publisher",
   }
 
