@@ -63,7 +63,7 @@ export function KycDetailsModal({ isOpen, onClose }: KycDetailsModalProps) {
                   <Calendar size={14} className="mr-1" />
                   Verification Date
                 </div>
-                <div className="font-semibold">June 29, 2025</div>
+                <div className="font-semibold">03-03-2026</div>
               </div>
 
               <div>

@@ -32,7 +32,7 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
     address: "",
     bio: "",
     website: "https://fancydiamondchain.com/",
-    joinDate: "March 3, 2026",
+    joinDate: "03-03-2026",
   })
 
   const handleSave = () => {
