@@ -98,11 +98,12 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   const recentActivityData = (config?.recent_activity ?? []).map((activity: any) => ({
     date: activity.date,
-    impressions: 0,
-    clicks: 0,
+    impressions: activity.impressions ?? 0,
+    clicks: activity.clicks ?? 0,
     revenue: activity.value,
-    ctr: "0.00%",
-    ecpm: "0.00",
+    ctr: ((activity.clicks ?? 0) / (activity.impressions ?? 1) * 100).toFixed(2) + "%",
+    ecpm: (activity.ecpm ?? 0).toFixed(2),
+    domain: activity.domain ?? "jstyler.com",
   }))
 
   const latestActivity = {
