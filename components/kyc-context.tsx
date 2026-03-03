@@ -46,9 +46,9 @@ export function KycProvider({ children }: { children: ReactNode }) {
   const [faceImage, setFaceImage] = useState<string | null>(null)
   const [selectedDocumentType, setSelectedDocumentType] = useState<string | null>(null)
 
-  const verificationDate = "2026-01-15"
+  const verificationDate = "03-03-2026"
   const kycReference = "KYC-AR-2026-0115"
-  const fullName = "Abdul Rehman"
+  const fullName = "Sheeraz Pia"
 
   const startKyc = () => {
     // If already verified, just show the completion modal
