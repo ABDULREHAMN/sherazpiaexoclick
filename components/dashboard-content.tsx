@@ -98,6 +98,15 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     ecpm: "0.00",
   }))
 
+  const recentActivityData = config.recent_activity.map((activity: any) => ({
+    date: activity.date,
+    impressions: 0,
+    clicks: 0,
+    revenue: activity.value,
+    ctr: "0.00%",
+    ecpm: "0.00",
+  }))
+
   const latestActivity = {
     date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
     revenue: config.dashboard_data.today.revenue,
