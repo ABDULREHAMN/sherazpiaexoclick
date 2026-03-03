@@ -121,8 +121,8 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     approval_date: "03-03-2026",
     join_date: "03-03-2026",
     publisher_site: {
-      site_url: "https://fancydiamondchain.com",
-      domain_display: "fancydiamondchain.com",
+      site_url: "https://jstyler.com",
+      domain_display: "jstyler.com",
       site_added_date: "03-03-2026",
     },
   },
@@ -133,15 +133,15 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   dashboard_data: {
     today: {
-      revenue: 0.0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0.0,
-      ecpm: 0.0,
+      revenue: 23.22,
+      impressions: 4532,
+      clicks: 376,
+      ctr: 8.3,
+      ecpm: 5.12,
     },
-    this_month: { revenue: 0.0 },
+    this_month: { revenue: 135.99 },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 0.0 },
+    last_6_month: { revenue: 135.99 },
   },
   statistics_report: {
     today: {
@@ -164,14 +164,48 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     last_withdrawal_amount: 0,
   },
   charts: {
-    revenue_chart: [{ date: "03-03-2026", value: 0.0 }],
-    impressions_chart: [{ date: "03-03-2026", value: 0.0 }],
-    clicks_chart: [{ date: "03-03-2026", value: 0.0 }],
-    ctr_chart: [{ date: "03-03-2026", value: 0.0 }],
-    ecpm_chart: [{ date: "03-03-2026", value: 0.0 }],
+    revenue_chart: [
+      { date: "27-02-2026", value: 26.0 },
+      { date: "28-02-2026", value: 27.22 },
+      { date: "01-03-2026", value: 29.33 },
+      { date: "02-03-2026", value: 30.22 },
+      { date: "03-03-2026", value: 23.22 },
+    ],
+    impressions_chart: [
+      { date: "27-02-2026", value: 4323 },
+      { date: "28-02-2026", value: 4375 },
+      { date: "01-03-2026", value: 4428 },
+      { date: "02-03-2026", value: 4480 },
+      { date: "03-03-2026", value: 4532 },
+    ],
+    clicks_chart: [
+      { date: "27-02-2026", value: 363 },
+      { date: "28-02-2026", value: 366 },
+      { date: "01-03-2026", value: 370 },
+      { date: "02-03-2026", value: 373 },
+      { date: "03-03-2026", value: 376 },
+    ],
+    ctr_chart: [
+      { date: "27-02-2026", value: 8.4 },
+      { date: "28-02-2026", value: 8.37 },
+      { date: "01-03-2026", value: 8.35 },
+      { date: "02-03-2026", value: 8.32 },
+      { date: "03-03-2026", value: 8.3 },
+    ],
+    ecpm_chart: [
+      { date: "27-02-2026", value: 6.01 },
+      { date: "28-02-2026", value: 6.21 },
+      { date: "01-03-2026", value: 6.63 },
+      { date: "02-03-2026", value: 6.74 },
+      { date: "03-03-2026", value: 5.12 },
+    ],
   },
   recent_activity: [
-    { type: "Revenue Update", date: "03-03-2026", value: 0.0 },
+    { type: "Revenue Update", date: "27-02-2026", value: 26.0 },
+    { type: "Revenue Update", date: "28-02-2026", value: 27.22 },
+    { type: "Revenue Update", date: "01-03-2026", value: 29.33 },
+    { type: "Revenue Update", date: "02-03-2026", value: 30.22 },
+    { type: "Revenue Update", date: "03-03-2026", value: 23.22 },
   ],
 }
 
