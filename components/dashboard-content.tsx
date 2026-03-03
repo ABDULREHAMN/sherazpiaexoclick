@@ -98,12 +98,11 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   const recentActivityData = (config?.recent_activity ?? []).map((activity: any) => ({
     date: activity.date,
-    impressions: activity.impressions ?? 0,
-    clicks: activity.clicks ?? 0,
+    impressions: 0,
+    clicks: 0,
     revenue: activity.value,
-    ctr: ((activity.clicks ?? 0) / (activity.impressions ?? 1) * 100).toFixed(2) + "%",
-    ecpm: (activity.ecpm ?? 0).toFixed(2),
-    domain: activity.domain ?? "jstyler.com",
+    ctr: "0.00%",
+    ecpm: "0.00",
   }))
 
   const latestActivity = {
@@ -1629,7 +1628,7 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
                   <RecentActivityRow
                     key={index}
                     date={item.date}
-                    domain={item.domain || "jistler.com"}
+                    domain="fancydiamondchain.com"
                     impressions={item.impressions}
                     clicks={item.clicks}
                     ctr={item.ctr}
