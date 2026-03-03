@@ -37,6 +37,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts"
+import { useDashboardConfig } from "@/hooks/use-dashboard-config"
 
 type DashboardView = "default" | "new" | "overview" // Added "overview" to DashboardView
 type WidgetType = "default" | "today" | "hourly"
@@ -46,14 +47,13 @@ interface DashboardContentProps {
 }
 
 export function DashboardContent({ onNavigate }: DashboardContentProps) {
-  const [dashboardView, setDashboardView] = useState<DashboardView>("default") // Changed initial state to "overview"
+  const { config } = useDashboardConfig()
+  const [dashboardView, setDashboardView] = useState<DashboardView>("default")
   const [activeWidget, setActiveWidget] = useState<WidgetType>("default")
   const [groupBy, setGroupBy] = useState("Day")
   const [chartView, setChartView] = useState<"daily" | "weekly" | "monthly">("daily")
-  // const [dateRange, setDateRange] = useState<7 | 14 | 30 | null>(null) // REMOVED
 
   const [dashboardDateRange, setDashboardDateRange] = useState<7 | 14 | 30 | null>(null)
-  // Updated to array-based multi-select for countries and devices
   const [selectedCountries, setSelectedCountries] = useState<string[]>(["All"])
   const [selectedDevices, setSelectedDevices] = useState<string[]>(["All"])
 
@@ -79,48 +79,53 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     }
   }
 
-  const availableBalance = 0
-  const pendingBalance = 0
-  const thisMonthEarnings = 0.003
-  const totalPayments = 0
-  const totalEarnings = 0.003
-  const nextWithdrawalDate = ""
+  // Load data from configuration with safety checks
+  const availableBalance = config?.payments?.available_balance ?? 0
+  const pendingBalance = config?.payments?.pending_balance ?? 0
+  const thisMonthEarnings = config?.dashboard_data?.this_month?.revenue ?? 0
+  const totalPayments = config?.payments?.payment_history?.length ?? 0
+  const totalEarnings = config?.dashboard_data?.today?.revenue ?? 0
+  const nextWithdrawalDate = config?.withdrawal_section?.last_withdrawal_date ?? ""
 
-  const allReportData = [
-    { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
-  ]
+  const allReportData = (config?.charts?.revenue_chart ?? []).map((entry: any) => ({
+    date: entry.date,
+    impressions: 0,
+    clicks: 0,
+    revenue: entry.value,
+    ctr: "0.00%",
+    ecpm: "0.00",
+  }))
 
-  const recentActivityData = [
-    { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
-    { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-  ]
+  const recentActivityData = (config?.recent_activity ?? []).map((activity: any) => ({
+    date: activity.date,
+    impressions: 0,
+    clicks: 0,
+    revenue: activity.value,
+    ctr: "0.00%",
+    ecpm: "0.00",
+  }))
 
   const latestActivity = {
-    date: "Jan 16, 2026",
-    revenue: 0.003,
-    impressions: 10,
-    clicks: 1,
-    ctr: "10.00%",
-    ecpm: "3.00",
+    date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
+    revenue: config?.dashboard_data?.today?.revenue ?? 0,
+    impressions: config?.dashboard_data?.today?.impressions ?? 0,
+    clicks: config?.dashboard_data?.today?.clicks ?? 0,
+    ctr: (config?.dashboard_data?.today?.ctr ?? 0).toFixed(2),
+    ecpm: (config?.dashboard_data?.today?.ecpm ?? 0).toFixed(2),
   }
 
-  const todayRevenue = 0.003
-  const todayImpressions = 10
-  const todayClicks = 1
-  const todayCTR = "10.00"
-  const todayECPM = "3.00"
+  const todayRevenue = config?.dashboard_data?.today?.revenue ?? 0
+  const todayImpressions = config?.dashboard_data?.today?.impressions ?? 0
+  const todayClicks = config?.dashboard_data?.today?.clicks ?? 0
+  const todayCTR = (config?.dashboard_data?.today?.ctr ?? 0).toFixed(2)
+  const todayECPM = (config?.dashboard_data?.today?.ecpm ?? 0).toFixed(2)
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: 10,
-    clicks: 1,
-    revenue: 0.003,
+    impressions: config?.dashboard_data?.today?.impressions ?? 0,
+    clicks: config?.dashboard_data?.today?.clicks ?? 0,
+    revenue: config?.dashboard_data?.today?.revenue ?? 0,
   }
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
@@ -1623,7 +1628,7 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
                   <RecentActivityRow
                     key={index}
                     date={item.date}
-                    domain="techblogi.com"
+                    domain="fancydiamondchain.com"
                     impressions={item.impressions}
                     clicks={item.clicks}
                     ctr={item.ctr}
