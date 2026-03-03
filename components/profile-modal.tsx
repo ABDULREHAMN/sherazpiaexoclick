@@ -20,7 +20,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
     username: "rajausman002",
     company: "Tech Blogi",
     phone: "+923227607144",
-    website: "https://techblogi.com",
+    website: "https://fancydiamondchain.com",
     joinDate: "12 January 2026",
     accountType: "Publisher",
   }

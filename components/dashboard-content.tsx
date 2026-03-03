@@ -37,6 +37,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts"
+import { useDashboardConfig } from "@/hooks/use-dashboard-config"
 
 type DashboardView = "default" | "new" | "overview" // Added "overview" to DashboardView
 type WidgetType = "default" | "today" | "hourly"
@@ -46,6 +47,7 @@ interface DashboardContentProps {
 }
 
 export function DashboardContent({ onNavigate }: DashboardContentProps) {
+  const { config } = useDashboardConfig()
   const [dashboardView, setDashboardView] = useState<DashboardView>("default") // Changed initial state to "overview"
   const [activeWidget, setActiveWidget] = useState<WidgetType>("default")
   const [groupBy, setGroupBy] = useState("Day")
@@ -79,12 +81,13 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     }
   }
 
-  const availableBalance = 0
-  const pendingBalance = 0
-  const thisMonthEarnings = 0.003
-  const totalPayments = 0
-  const totalEarnings = 0.003
-  const nextWithdrawalDate = ""
+  // Load data from configuration
+  const availableBalance = config.payments.available_balance
+  const pendingBalance = config.payments.pending_balance
+  const thisMonthEarnings = config.dashboard_summary.this_month.revenue
+  const totalPayments = config.payments.payment_history.length
+  const totalEarnings = config.totals_bar.revenue
+  const nextWithdrawalDate = config.withdrawal_section.last_withdrawal_date
 
   const allReportData = [
     { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
@@ -93,34 +96,36 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
   ]
 
-  const recentActivityData = [
-    { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
-    { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-  ]
+  const recentActivityData = config.recent_activity.length
+    ? config.recent_activity
+    : [
+        { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
+        { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
+        { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
+        { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
+      ]
 
   const latestActivity = {
-    date: "Jan 16, 2026",
-    revenue: 0.003,
-    impressions: 10,
-    clicks: 1,
-    ctr: "10.00%",
-    ecpm: "3.00",
+    date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
+    revenue: config.dashboard_summary.today.revenue,
+    impressions: config.dashboard_summary.today.impressions,
+    clicks: config.dashboard_summary.today.clicks,
+    ctr: config.dashboard_summary.today.ctr.toFixed(2),
+    ecpm: config.dashboard_summary.today.ecpm.toFixed(2),
   }
 
-  const todayRevenue = 0.003
-  const todayImpressions = 10
-  const todayClicks = 1
-  const todayCTR = "10.00"
-  const todayECPM = "3.00"
+  const todayRevenue = config.dashboard_summary.today.revenue
+  const todayImpressions = config.dashboard_summary.today.impressions
+  const todayClicks = config.dashboard_summary.today.clicks
+  const todayCTR = config.dashboard_summary.today.ctr.toFixed(2)
+  const todayECPM = config.dashboard_summary.today.ecpm.toFixed(2)
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: 10,
-    clicks: 1,
-    revenue: 0.003,
+    impressions: config.dashboard_summary.today.impressions,
+    clicks: config.dashboard_summary.today.clicks,
+    revenue: config.dashboard_summary.today.revenue,
   }
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
