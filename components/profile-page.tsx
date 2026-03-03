@@ -31,7 +31,7 @@ export function ProfilePage({ onBack }: ProfilePageProps) {
     phone: "",
     address: "",
     bio: "",
-    website: "https://jstyler.com/",
+    website: "https://fancydiamondchain.com/",
     joinDate: "03-03-2026",
   })
 
