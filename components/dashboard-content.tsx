@@ -48,14 +48,12 @@ interface DashboardContentProps {
 
 export function DashboardContent({ onNavigate }: DashboardContentProps) {
   const { config } = useDashboardConfig()
-  const [dashboardView, setDashboardView] = useState<DashboardView>("default") // Changed initial state to "overview"
+  const [dashboardView, setDashboardView] = useState<DashboardView>("default")
   const [activeWidget, setActiveWidget] = useState<WidgetType>("default")
   const [groupBy, setGroupBy] = useState("Day")
   const [chartView, setChartView] = useState<"daily" | "weekly" | "monthly">("daily")
-  // const [dateRange, setDateRange] = useState<7 | 14 | 30 | null>(null) // REMOVED
 
   const [dashboardDateRange, setDashboardDateRange] = useState<7 | 14 | 30 | null>(null)
-  // Updated to array-based multi-select for countries and devices
   const [selectedCountries, setSelectedCountries] = useState<string[]>(["All"])
   const [selectedDevices, setSelectedDevices] = useState<string[]>(["All"])
 
@@ -81,15 +79,15 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     }
   }
 
-  // Load data from configuration
-  const availableBalance = config.payments.available_balance
-  const pendingBalance = config.payments.pending_balance
-  const thisMonthEarnings = config.dashboard_data.this_month.revenue
-  const totalPayments = config.payments.payment_history.length
-  const totalEarnings = config.dashboard_data.today.revenue
-  const nextWithdrawalDate = config.withdrawal_section.last_withdrawal_date
+  // Load data from configuration with safety checks
+  const availableBalance = config?.payments?.available_balance ?? 0
+  const pendingBalance = config?.payments?.pending_balance ?? 0
+  const thisMonthEarnings = config?.dashboard_data?.this_month?.revenue ?? 0
+  const totalPayments = config?.payments?.payment_history?.length ?? 0
+  const totalEarnings = config?.dashboard_data?.today?.revenue ?? 0
+  const nextWithdrawalDate = config?.withdrawal_section?.last_withdrawal_date ?? ""
 
-  const allReportData = config.charts.revenue_chart.map((entry: any) => ({
+  const allReportData = (config?.charts?.revenue_chart ?? []).map((entry: any) => ({
     date: entry.date,
     impressions: 0,
     clicks: 0,
@@ -98,7 +96,7 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     ecpm: "0.00",
   }))
 
-  const recentActivityData = config.recent_activity.map((activity: any) => ({
+  const recentActivityData = (config?.recent_activity ?? []).map((activity: any) => ({
     date: activity.date,
     impressions: 0,
     clicks: 0,
@@ -109,25 +107,25 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   const latestActivity = {
     date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
-    revenue: config.dashboard_data.today.revenue,
-    impressions: config.dashboard_data.today.impressions,
-    clicks: config.dashboard_data.today.clicks,
-    ctr: config.dashboard_data.today.ctr.toFixed(2),
-    ecpm: config.dashboard_data.today.ecpm.toFixed(2),
+    revenue: config?.dashboard_data?.today?.revenue ?? 0,
+    impressions: config?.dashboard_data?.today?.impressions ?? 0,
+    clicks: config?.dashboard_data?.today?.clicks ?? 0,
+    ctr: (config?.dashboard_data?.today?.ctr ?? 0).toFixed(2),
+    ecpm: (config?.dashboard_data?.today?.ecpm ?? 0).toFixed(2),
   }
 
-  const todayRevenue = config.dashboard_data.today.revenue
-  const todayImpressions = config.dashboard_data.today.impressions
-  const todayClicks = config.dashboard_data.today.clicks
-  const todayCTR = config.dashboard_data.today.ctr.toFixed(2)
-  const todayECPM = config.dashboard_data.today.ecpm.toFixed(2)
+  const todayRevenue = config?.dashboard_data?.today?.revenue ?? 0
+  const todayImpressions = config?.dashboard_data?.today?.impressions ?? 0
+  const todayClicks = config?.dashboard_data?.today?.clicks ?? 0
+  const todayCTR = (config?.dashboard_data?.today?.ctr ?? 0).toFixed(2)
+  const todayECPM = (config?.dashboard_data?.today?.ecpm ?? 0).toFixed(2)
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: config.dashboard_data.today.impressions,
-    clicks: config.dashboard_data.today.clicks,
-    revenue: config.dashboard_data.today.revenue,
+    impressions: config?.dashboard_data?.today?.impressions ?? 0,
+    clicks: config?.dashboard_data?.today?.clicks ?? 0,
+    revenue: config?.dashboard_data?.today?.revenue ?? 0,
   }
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
