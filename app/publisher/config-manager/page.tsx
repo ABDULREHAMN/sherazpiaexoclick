@@ -11,33 +11,20 @@ import { AlertCircle, Save, RotateCcw } from "lucide-react"
 
 export default function ConfigManagerPage() {
   const router = useRouter()
-  const { config, updateDashboardSummary, updateTotalsBar, updatePayments } = useDashboardConfig()
+  const { config, updateDashboardSummary, updatePayments } = useDashboardConfig()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState("")
 
-  // Form state
+  // Form state - Today only
   const [formData, setFormData] = useState({
-    // Today metrics
     todayRevenue: "0",
     todayImpressions: "0",
     todayClicks: "0",
     todayCTR: "0",
     todayECPM: "0",
-    // Monthly
-    thisMonthRevenue: "0",
-    lastMonthRevenue: "0",
-    last6MonthRevenue: "0",
-    // Totals
-    totalRevenue: "0",
-    totalImpressions: "0",
-    totalClicks: "0",
-    averageCTR: "0",
-    averageECPM: "0",
-    // Payments
     availableBalance: "0",
     pendingBalance: "0",
-    minimumWithdrawal: "0",
   })
 
   useEffect(() => {
@@ -49,24 +36,15 @@ export default function ConfigManagerPage() {
     }
     setIsAuthenticated(true)
 
-    // Populate form with current config
+    // Populate form with current config - today only
     setFormData({
       todayRevenue: config.dashboard_data.today.revenue.toString(),
       todayImpressions: config.dashboard_data.today.impressions.toString(),
       todayClicks: config.dashboard_data.today.clicks.toString(),
       todayCTR: config.dashboard_data.today.ctr.toString(),
       todayECPM: config.dashboard_data.today.ecpm.toString(),
-      thisMonthRevenue: config.dashboard_data.this_month.revenue.toString(),
-      lastMonthRevenue: config.dashboard_data.last_month.revenue.toString(),
-      last6MonthRevenue: config.dashboard_data.last_6_month.revenue.toString(),
-      totalRevenue: config.dashboard_data.today.revenue.toString(),
-      totalImpressions: config.dashboard_data.today.impressions.toString(),
-      totalClicks: config.dashboard_data.today.clicks.toString(),
-      averageCTR: config.dashboard_data.today.ctr.toString(),
-      averageECPM: config.dashboard_data.today.ecpm.toString(),
       availableBalance: config.payments.available_balance.toString(),
       pendingBalance: config.payments.pending_balance.toString(),
-      minimumWithdrawal: config.withdrawal_section.minimum_withdrawal.toString(),
     })
   }, [config, router])
 
@@ -83,27 +61,18 @@ export default function ConfigManagerPage() {
       setIsSaving(true)
       setSaveMessage("")
 
-      // Parse and validate numbers
+      // Parse and validate numbers - today only
       const parsedData = {
         todayRevenue: parseFloat(formData.todayRevenue) || 0,
         todayImpressions: parseInt(formData.todayImpressions) || 0,
         todayClicks: parseInt(formData.todayClicks) || 0,
         todayCTR: parseFloat(formData.todayCTR) || 0,
         todayECPM: parseFloat(formData.todayECPM) || 0,
-        thisMonthRevenue: parseFloat(formData.thisMonthRevenue) || 0,
-        lastMonthRevenue: parseFloat(formData.lastMonthRevenue) || 0,
-        last6MonthRevenue: parseFloat(formData.last6MonthRevenue) || 0,
-        totalRevenue: parseFloat(formData.totalRevenue) || 0,
-        totalImpressions: parseInt(formData.totalImpressions) || 0,
-        totalClicks: parseInt(formData.totalClicks) || 0,
-        averageCTR: parseFloat(formData.averageCTR) || 0,
-        averageECPM: parseFloat(formData.averageECPM) || 0,
         availableBalance: parseFloat(formData.availableBalance) || 0,
         pendingBalance: parseFloat(formData.pendingBalance) || 0,
-        minimumWithdrawal: parseFloat(formData.minimumWithdrawal) || 0,
       }
 
-      // Update dashboard data
+      // Update dashboard data - today only
       updateDashboardSummary({
         today: {
           revenue: parsedData.todayRevenue,
@@ -112,9 +81,6 @@ export default function ConfigManagerPage() {
           ctr: parsedData.todayCTR,
           ecpm: parsedData.todayECPM,
         },
-        this_month: { revenue: parsedData.thisMonthRevenue },
-        last_month: { revenue: parsedData.lastMonthRevenue },
-        last_6_month: { revenue: parsedData.last6MonthRevenue },
       })
 
       // Update payments
@@ -140,17 +106,8 @@ export default function ConfigManagerPage() {
         todayClicks: "0",
         todayCTR: "0",
         todayECPM: "0",
-        thisMonthRevenue: "0",
-        lastMonthRevenue: "0",
-        last6MonthRevenue: "0",
-        totalRevenue: "0",
-        totalImpressions: "0",
-        totalClicks: "0",
-        averageCTR: "0",
-        averageECPM: "0",
         availableBalance: "0",
         pendingBalance: "0",
-        minimumWithdrawal: "0",
       })
     }
   }
@@ -240,115 +197,7 @@ export default function ConfigManagerPage() {
             </div>
           </Card>
 
-          {/* Monthly Metrics */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4">Monthly Metrics</h2>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="thisMonthRevenue">This Month Revenue ($)</Label>
-                <Input
-                  id="thisMonthRevenue"
-                  name="thisMonthRevenue"
-                  type="number"
-                  step="0.01"
-                  value={formData.thisMonthRevenue}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-              <div>
-                <Label htmlFor="lastMonthRevenue">Last Month Revenue ($)</Label>
-                <Input
-                  id="lastMonthRevenue"
-                  name="lastMonthRevenue"
-                  type="number"
-                  step="0.01"
-                  value={formData.lastMonthRevenue}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-              <div>
-                <Label htmlFor="last6MonthRevenue">Last 6 Month Revenue ($)</Label>
-                <Input
-                  id="last6MonthRevenue"
-                  name="last6MonthRevenue"
-                  type="number"
-                  step="0.01"
-                  value={formData.last6MonthRevenue}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-            </div>
-          </Card>
-
-          {/* Total Metrics */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4">Total Metrics</h2>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="totalRevenue">Total Revenue ($)</Label>
-                <Input
-                  id="totalRevenue"
-                  name="totalRevenue"
-                  type="number"
-                  step="0.01"
-                  value={formData.totalRevenue}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-              <div>
-                <Label htmlFor="totalImpressions">Total Impressions</Label>
-                <Input
-                  id="totalImpressions"
-                  name="totalImpressions"
-                  type="number"
-                  value={formData.totalImpressions}
-                  onChange={handleInputChange}
-                  placeholder="0"
-                />
-              </div>
-              <div>
-                <Label htmlFor="totalClicks">Total Clicks</Label>
-                <Input
-                  id="totalClicks"
-                  name="totalClicks"
-                  type="number"
-                  value={formData.totalClicks}
-                  onChange={handleInputChange}
-                  placeholder="0"
-                />
-              </div>
-              <div>
-                <Label htmlFor="averageCTR">Average CTR (%)</Label>
-                <Input
-                  id="averageCTR"
-                  name="averageCTR"
-                  type="number"
-                  step="0.01"
-                  value={formData.averageCTR}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-              <div>
-                <Label htmlFor="averageECPM">Average eCPM ($)</Label>
-                <Input
-                  id="averageECPM"
-                  name="averageECPM"
-                  type="number"
-                  step="0.01"
-                  value={formData.averageECPM}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-            </div>
-          </Card>
-
-          {/* Payment Metrics */}
+          {/* Payment Information */}
           <Card className="p-6">
             <h2 className="text-xl font-semibold mb-4">Payment Information</h2>
             <div className="space-y-4">
@@ -372,18 +221,6 @@ export default function ConfigManagerPage() {
                   type="number"
                   step="0.01"
                   value={formData.pendingBalance}
-                  onChange={handleInputChange}
-                  placeholder="0.00"
-                />
-              </div>
-              <div>
-                <Label htmlFor="minimumWithdrawal">Minimum Withdrawal ($)</Label>
-                <Input
-                  id="minimumWithdrawal"
-                  name="minimumWithdrawal"
-                  type="number"
-                  step="0.01"
-                  value={formData.minimumWithdrawal}
                   onChange={handleInputChange}
                   placeholder="0.00"
                 />

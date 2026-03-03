@@ -49,12 +49,12 @@ export function useDashboardConfig() {
 
   // Update profile information
   const updateProfile = useCallback(
-    (profile: Partial<DashboardConfig["profile"]>) => {
+    (profile: Partial<DashboardConfig["publisher_profile"]>) => {
       if (!config) return
       return updateConfig({
         ...config,
-        profile: {
-          ...config.profile,
+        publisher_profile: {
+          ...config.publisher_profile,
           ...profile,
         },
       })
@@ -77,7 +77,7 @@ export function useDashboardConfig() {
     [config, updateConfig]
   )
 
-  // Update statistics report
+  // Update statistics report - today only
   const updateStatisticsReport = useCallback(
     (report: Partial<DashboardConfig["statistics_report"]>) => {
       if (!config) return

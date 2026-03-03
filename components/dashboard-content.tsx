@@ -89,21 +89,14 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
   const totalEarnings = config.dashboard_data.today.revenue
   const nextWithdrawalDate = config.withdrawal_section.last_withdrawal_date
 
-  const allReportData = [
-    { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
-  ]
-
-  const recentActivityData = config.recent_activity.length
-    ? config.recent_activity
-    : [
-        { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
-        { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-        { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-        { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-      ]
+  const allReportData = config.charts.revenue_chart.map((entry: any) => ({
+    date: entry.date,
+    impressions: 0,
+    clicks: 0,
+    revenue: entry.value,
+    ctr: "0.00%",
+    ecpm: "0.00",
+  }))
 
   const latestActivity = {
     date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),

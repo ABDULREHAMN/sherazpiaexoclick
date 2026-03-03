@@ -29,6 +29,7 @@ export interface DashboardConfig {
       external_api: boolean
       layout_change_allowed: boolean
       design_change_allowed: boolean
+      report_type: "today_only"
     }
   }
   ad_network: {
@@ -60,10 +61,7 @@ export interface DashboardConfig {
     last_6_month: { revenue: number }
   }
   statistics_report: {
-    last_7_days: DashboardMetrics
-    last_30_days: DashboardMetrics
-    last_3_month: DashboardMetrics
-    custom: DashboardMetrics
+    today: DashboardMetrics
   }
   payments: {
     available_balance: number
@@ -77,13 +75,17 @@ export interface DashboardConfig {
     last_withdrawal_amount: number
   }
   charts: {
-    revenue_chart: Array<any>
-    impressions_chart: Array<any>
-    clicks_chart: Array<any>
-    ctr_chart: Array<any>
-    ecpm_chart: Array<any>
+    revenue_chart: Array<{ date: string; value: number }>
+    impressions_chart: Array<{ date: string; value: number }>
+    clicks_chart: Array<{ date: string; value: number }>
+    ctr_chart: Array<{ date: string; value: number }>
+    ecpm_chart: Array<{ date: string; value: number }>
   }
-  recent_activity: Array<any>
+  recent_activity: Array<{
+    type: "Revenue Update" | "Impression Update" | "Click Update"
+    date: string
+    value: number
+  }>
 }
 
 // Default configuration with publisher profile
@@ -104,6 +106,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       external_api: false,
       layout_change_allowed: false,
       design_change_allowed: false,
+      report_type: "today_only",
     },
   },
   ad_network: {
@@ -141,28 +144,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     last_6_month: { revenue: 0.0 },
   },
   statistics_report: {
-    last_7_days: {
-      revenue: 0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0,
-      ecpm: 0,
-    },
-    last_30_days: {
-      revenue: 0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0,
-      ecpm: 0,
-    },
-    last_3_month: {
-      revenue: 0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0,
-      ecpm: 0,
-    },
-    custom: {
+    today: {
       revenue: 0,
       impressions: 0,
       clicks: 0,
@@ -182,13 +164,15 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     last_withdrawal_amount: 0,
   },
   charts: {
-    revenue_chart: [],
-    impressions_chart: [],
-    clicks_chart: [],
-    ctr_chart: [],
-    ecpm_chart: [],
+    revenue_chart: [{ date: "03-03-2026", value: 0.0 }],
+    impressions_chart: [{ date: "03-03-2026", value: 0.0 }],
+    clicks_chart: [{ date: "03-03-2026", value: 0.0 }],
+    ctr_chart: [{ date: "03-03-2026", value: 0.0 }],
+    ecpm_chart: [{ date: "03-03-2026", value: 0.0 }],
   },
-  recent_activity: [],
+  recent_activity: [
+    { type: "Revenue Update", date: "03-03-2026", value: 0.0 },
+  ],
 }
 
 const CONFIG_STORAGE_KEY = "dashboard_config_v1"
