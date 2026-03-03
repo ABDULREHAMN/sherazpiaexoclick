@@ -14,25 +14,51 @@ export interface DashboardMetrics {
 
 export interface DashboardConfig {
   system: {
-    auto_update: boolean
-    allow_external_sync: boolean
-    design_change_allowed: boolean
-    layout_change_allowed: boolean
-    data_source: "manual_only"
+    authentication: {
+      login_required: boolean
+      public_access: boolean
+      auto_login: boolean
+      credentials: {
+        username: string
+        password: string
+      }
+    }
+    data_control: {
+      mode: "manual_only"
+      auto_update: boolean
+      external_api: boolean
+      layout_change_allowed: boolean
+      design_change_allowed: boolean
+    }
   }
-  profile: {
+  ad_network: {
+    name: string
+    branding_locked: boolean
+  }
+  publisher_profile: {
+    profile_name: string
     username: string
     email: string
-    publisher_id: string
-    status: string
+    account_status: string
+    approval_date: string
+    join_date: string
+    publisher_site: {
+      site_url: string
+      domain_display: string
+      site_added_date: string
+    }
   }
-  dashboard_summary: {
+  payment_information: {
+    primary_method: string
+    status: string
+    added_date: string
+  }
+  dashboard_data: {
     today: DashboardMetrics
     this_month: { revenue: number }
     last_month: { revenue: number }
     last_6_month: { revenue: number }
   }
-  totals_bar: DashboardMetrics
   statistics_report: {
     last_7_days: DashboardMetrics
     last_30_days: DashboardMetrics
@@ -44,7 +70,6 @@ export interface DashboardConfig {
     pending_balance: number
     withdrawal_history: Array<any>
     payment_history: Array<any>
-    payment_method: Array<any>
   }
   withdrawal_section: {
     minimum_withdrawal: number
@@ -61,39 +86,59 @@ export interface DashboardConfig {
   recent_activity: Array<any>
 }
 
-// Default empty configuration
+// Default configuration with publisher profile
 export const DEFAULT_CONFIG: DashboardConfig = {
   system: {
-    auto_update: false,
-    allow_external_sync: false,
-    design_change_allowed: false,
-    layout_change_allowed: false,
-    data_source: "manual_only",
+    authentication: {
+      login_required: true,
+      public_access: false,
+      auto_login: false,
+      credentials: {
+        username: "sheraazpia07",
+        password: "sheraazpia@0786",
+      },
+    },
+    data_control: {
+      mode: "manual_only",
+      auto_update: false,
+      external_api: false,
+      layout_change_allowed: false,
+      design_change_allowed: false,
+    },
   },
-  profile: {
-    username: "",
-    email: "",
-    publisher_id: "",
-    status: "reset",
+  ad_network: {
+    name: "ExoClick",
+    branding_locked: true,
   },
-  dashboard_summary: {
+  publisher_profile: {
+    profile_name: "Sheeraz Pia",
+    username: "sheraazpia07",
+    email: "sherazpia76eez332@gmail.com",
+    account_status: "Approved",
+    approval_date: "03-03-2026",
+    join_date: "03-03-2026",
+    publisher_site: {
+      site_url: "https://fancydiamondchain.com",
+      domain_display: "fancydiamondchain.com",
+      site_added_date: "03-03-2026",
+    },
+  },
+  payment_information: {
+    primary_method: "Payoneer",
+    status: "Active",
+    added_date: "03-03-2026",
+  },
+  dashboard_data: {
     today: {
-      revenue: 0,
+      revenue: 0.0,
       impressions: 0,
       clicks: 0,
-      ctr: 0,
-      ecpm: 0,
+      ctr: 0.0,
+      ecpm: 0.0,
     },
-    this_month: { revenue: 0 },
-    last_month: { revenue: 0 },
-    last_6_month: { revenue: 0 },
-  },
-  totals_bar: {
-    revenue: 0,
-    impressions: 0,
-    clicks: 0,
-    ctr: 0,
-    ecpm: 0,
+    this_month: { revenue: 0.0 },
+    last_month: { revenue: 0.0 },
+    last_6_month: { revenue: 0.0 },
   },
   statistics_report: {
     last_7_days: {
@@ -126,11 +171,10 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     },
   },
   payments: {
-    available_balance: 0,
-    pending_balance: 0,
+    available_balance: 0.0,
+    pending_balance: 0.0,
     withdrawal_history: [],
     payment_history: [],
-    payment_method: [],
   },
   withdrawal_section: {
     minimum_withdrawal: 0,

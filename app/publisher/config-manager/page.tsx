@@ -51,19 +51,19 @@ export default function ConfigManagerPage() {
 
     // Populate form with current config
     setFormData({
-      todayRevenue: config.dashboard_summary.today.revenue.toString(),
-      todayImpressions: config.dashboard_summary.today.impressions.toString(),
-      todayClicks: config.dashboard_summary.today.clicks.toString(),
-      todayCTR: config.dashboard_summary.today.ctr.toString(),
-      todayECPM: config.dashboard_summary.today.ecpm.toString(),
-      thisMonthRevenue: config.dashboard_summary.this_month.revenue.toString(),
-      lastMonthRevenue: config.dashboard_summary.last_month.revenue.toString(),
-      last6MonthRevenue: config.dashboard_summary.last_6_month.revenue.toString(),
-      totalRevenue: config.totals_bar.revenue.toString(),
-      totalImpressions: config.totals_bar.impressions.toString(),
-      totalClicks: config.totals_bar.clicks.toString(),
-      averageCTR: config.totals_bar.ctr.toString(),
-      averageECPM: config.totals_bar.ecpm.toString(),
+      todayRevenue: config.dashboard_data.today.revenue.toString(),
+      todayImpressions: config.dashboard_data.today.impressions.toString(),
+      todayClicks: config.dashboard_data.today.clicks.toString(),
+      todayCTR: config.dashboard_data.today.ctr.toString(),
+      todayECPM: config.dashboard_data.today.ecpm.toString(),
+      thisMonthRevenue: config.dashboard_data.this_month.revenue.toString(),
+      lastMonthRevenue: config.dashboard_data.last_month.revenue.toString(),
+      last6MonthRevenue: config.dashboard_data.last_6_month.revenue.toString(),
+      totalRevenue: config.dashboard_data.today.revenue.toString(),
+      totalImpressions: config.dashboard_data.today.impressions.toString(),
+      totalClicks: config.dashboard_data.today.clicks.toString(),
+      averageCTR: config.dashboard_data.today.ctr.toString(),
+      averageECPM: config.dashboard_data.today.ecpm.toString(),
       availableBalance: config.payments.available_balance.toString(),
       pendingBalance: config.payments.pending_balance.toString(),
       minimumWithdrawal: config.withdrawal_section.minimum_withdrawal.toString(),
@@ -103,7 +103,7 @@ export default function ConfigManagerPage() {
         minimumWithdrawal: parseFloat(formData.minimumWithdrawal) || 0,
       }
 
-      // Update dashboard summary
+      // Update dashboard data
       updateDashboardSummary({
         today: {
           revenue: parsedData.todayRevenue,
@@ -115,15 +115,6 @@ export default function ConfigManagerPage() {
         this_month: { revenue: parsedData.thisMonthRevenue },
         last_month: { revenue: parsedData.lastMonthRevenue },
         last_6_month: { revenue: parsedData.last6MonthRevenue },
-      })
-
-      // Update totals bar
-      updateTotalsBar({
-        revenue: parsedData.totalRevenue,
-        impressions: parsedData.totalImpressions,
-        clicks: parsedData.totalClicks,
-        ctr: parsedData.averageCTR,
-        ecpm: parsedData.averageECPM,
       })
 
       // Update payments

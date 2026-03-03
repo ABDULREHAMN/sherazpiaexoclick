@@ -84,9 +84,9 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
   // Load data from configuration
   const availableBalance = config.payments.available_balance
   const pendingBalance = config.payments.pending_balance
-  const thisMonthEarnings = config.dashboard_summary.this_month.revenue
+  const thisMonthEarnings = config.dashboard_data.this_month.revenue
   const totalPayments = config.payments.payment_history.length
-  const totalEarnings = config.totals_bar.revenue
+  const totalEarnings = config.dashboard_data.today.revenue
   const nextWithdrawalDate = config.withdrawal_section.last_withdrawal_date
 
   const allReportData = [
@@ -107,25 +107,25 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   const latestActivity = {
     date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
-    revenue: config.dashboard_summary.today.revenue,
-    impressions: config.dashboard_summary.today.impressions,
-    clicks: config.dashboard_summary.today.clicks,
-    ctr: config.dashboard_summary.today.ctr.toFixed(2),
-    ecpm: config.dashboard_summary.today.ecpm.toFixed(2),
+    revenue: config.dashboard_data.today.revenue,
+    impressions: config.dashboard_data.today.impressions,
+    clicks: config.dashboard_data.today.clicks,
+    ctr: config.dashboard_data.today.ctr.toFixed(2),
+    ecpm: config.dashboard_data.today.ecpm.toFixed(2),
   }
 
-  const todayRevenue = config.dashboard_summary.today.revenue
-  const todayImpressions = config.dashboard_summary.today.impressions
-  const todayClicks = config.dashboard_summary.today.clicks
-  const todayCTR = config.dashboard_summary.today.ctr.toFixed(2)
-  const todayECPM = config.dashboard_summary.today.ecpm.toFixed(2)
+  const todayRevenue = config.dashboard_data.today.revenue
+  const todayImpressions = config.dashboard_data.today.impressions
+  const todayClicks = config.dashboard_data.today.clicks
+  const todayCTR = config.dashboard_data.today.ctr.toFixed(2)
+  const todayECPM = config.dashboard_data.today.ecpm.toFixed(2)
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: config.dashboard_summary.today.impressions,
-    clicks: config.dashboard_summary.today.clicks,
-    revenue: config.dashboard_summary.today.revenue,
+    impressions: config.dashboard_data.today.impressions,
+    clicks: config.dashboard_data.today.clicks,
+    revenue: config.dashboard_data.today.revenue,
   }
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions

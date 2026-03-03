@@ -32,30 +32,15 @@ export function useDashboardConfig() {
     return updated
   }, [])
 
-  // Update dashboard summary metrics
+  // Update dashboard data metrics
   const updateDashboardSummary = useCallback(
-    (summary: Partial<DashboardConfig["dashboard_summary"]>) => {
+    (summary: Partial<DashboardConfig["dashboard_data"]>) => {
       if (!config) return
       return updateConfig({
         ...config,
-        dashboard_summary: {
-          ...config.dashboard_summary,
+        dashboard_data: {
+          ...config.dashboard_data,
           ...summary,
-        },
-      })
-    },
-    [config, updateConfig]
-  )
-
-  // Update totals bar metrics
-  const updateTotalsBar = useCallback(
-    (totals: Partial<DashboardConfig["totals_bar"]>) => {
-      if (!config) return
-      return updateConfig({
-        ...config,
-        totals_bar: {
-          ...config.totals_bar,
-          ...totals,
         },
       })
     },
@@ -134,7 +119,6 @@ export function useDashboardConfig() {
     isLoading,
     updateConfig,
     updateDashboardSummary,
-    updateTotalsBar,
     updateProfile,
     updatePayments,
     updateStatisticsReport,
