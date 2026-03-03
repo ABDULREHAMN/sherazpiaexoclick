@@ -47,7 +47,7 @@ export function KycDetailsModal({ isOpen, onClose }: KycDetailsModalProps) {
                   <FileText size={14} className="mr-1" />
                   Full Name
                 </div>
-                <div className="font-semibold">Motorist Michael, Matthew</div>
+                <div className="font-semibold">Sheeraz Pia</div>
               </div>
 
               <div>
@@ -55,7 +55,7 @@ export function KycDetailsModal({ isOpen, onClose }: KycDetailsModalProps) {
                   <FileText size={14} className="mr-1" />
                   Document Type
                 </div>
-                <div className="font-semibold">Driving License</div>
+                <div className="font-semibold">Manual Review</div>
               </div>
 
               <div>
@@ -71,7 +71,7 @@ export function KycDetailsModal({ isOpen, onClose }: KycDetailsModalProps) {
                   <Hash size={14} className="mr-1" />
                   ID Reference
                 </div>
-                <div className="font-mono text-sm">#KYC2025-JUNE29</div>
+                <div className="font-mono text-sm">KYC-AR-2026-0115</div>
               </div>
             </div>
 

@@ -33,12 +33,12 @@ export function KycInformationCard() {
 
             <div>
               <div className="text-sm text-gray-600">Document Type</div>
-              <div className="font-medium">Driving License</div>
+              <div className="font-medium">Manual Review</div>
             </div>
 
             <div>
               <div className="text-sm text-gray-600">Verification Date</div>
-              <div className="font-medium">June 29, 2025</div>
+              <div className="font-medium">03-03-2026</div>
             </div>
 
             <div>
