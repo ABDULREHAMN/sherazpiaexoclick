@@ -118,7 +118,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     branding_locked: true,
   },
   publisher_profile: {
-    profile_name: "Sheeraz Pia",
+    profile_name: "Musa Ibrahim",
     username: "sheraazpia07",
     email: "sherazpia76eez332@gmail.com",
     account_status: "Approved",
