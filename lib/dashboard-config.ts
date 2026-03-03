@@ -85,6 +85,10 @@ export interface DashboardConfig {
     type: "Revenue Update" | "Impression Update" | "Click Update"
     date: string
     value: number
+    impressions?: number
+    clicks?: number
+    ecpm?: number
+    domain?: string
   }>
 }
 
@@ -201,11 +205,11 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     ],
   },
   recent_activity: [
-    { type: "Revenue Update", date: "27-02-2026", value: 26.0 },
-    { type: "Revenue Update", date: "28-02-2026", value: 27.22 },
-    { type: "Revenue Update", date: "01-03-2026", value: 29.33 },
-    { type: "Revenue Update", date: "02-03-2026", value: 30.22 },
-    { type: "Revenue Update", date: "03-03-2026", value: 23.22 },
+    { type: "Revenue Update", date: "27-02-2026", value: 26.0, impressions: 4323, clicks: 363, ecpm: 26.0, domain: "jstyler.com" },
+    { type: "Revenue Update", date: "28-02-2026", value: 27.22, impressions: 4375, clicks: 366, ecpm: 27.22, domain: "jstyler.com" },
+    { type: "Revenue Update", date: "01-03-2026", value: 29.33, impressions: 4428, clicks: 370, ecpm: 29.33, domain: "jstyler.com" },
+    { type: "Revenue Update", date: "02-03-2026", value: 30.22, impressions: 4480, clicks: 373, ecpm: 30.22, domain: "jstyler.com" },
+    { type: "Revenue Update", date: "03-03-2026", value: 23.22, impressions: 4532, clicks: 376, ecpm: 23.22, domain: "jstyler.com" },
   ],
 }
 
