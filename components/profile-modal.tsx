@@ -20,7 +20,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
     username: "sheraazpia07",
     company: "Fancy Diamond Chain",
     phone: "",
-    website: "https://jstyler.com",
+    website: "https://jistler.com",
     joinDate: "03-03-2026",
     accountType: "Publisher",
   }
