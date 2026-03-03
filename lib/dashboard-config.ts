@@ -118,15 +118,15 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     branding_locked: true,
   },
   publisher_profile: {
-    profile_name: "Musa Ibrahim",
+    profile_name: "Sheeraz Pia",
     username: "sheraazpia07",
     email: "sherazpia76eez332@gmail.com",
     account_status: "Approved",
     approval_date: "03-03-2026",
     join_date: "03-03-2026",
     publisher_site: {
-      site_url: "https://jistler.com",
-      domain_display: "jistler.com",
+      site_url: "https://jstyler.com",
+      domain_display: "jstyler.com",
       site_added_date: "03-03-2026",
     },
   },
