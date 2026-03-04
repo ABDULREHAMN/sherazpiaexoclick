@@ -188,6 +188,8 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   recent_activity: [
     { type: "Revenue Update", date: "03-03-2026", value: 0.0 },
     { type: "Revenue Update", date: "04-03-2026", value: 5.77 },
+    { type: "Impression Update", date: "04-03-2026", value: 3897 },
+    { type: "Click Update", date: "04-03-2026", value: 78 },
   ],
 }
 
