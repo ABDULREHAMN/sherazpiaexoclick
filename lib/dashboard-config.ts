@@ -133,27 +133,27 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   dashboard_data: {
     today: {
-      revenue: 0.0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0.0,
-      ecpm: 0.0,
+      revenue: 5.77,
+      impressions: 3897,
+      clicks: 78,
+      ctr: 1.22,
+      ecpm: 15.22,
     },
-    this_month: { revenue: 0.0 },
+    this_month: { revenue: 5.77 },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 0.0 },
+    last_6_month: { revenue: 5.77 },
   },
   statistics_report: {
     today: {
-      revenue: 0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0,
-      ecpm: 0,
+      revenue: 5.77,
+      impressions: 3897,
+      clicks: 78,
+      ctr: 1.22,
+      ecpm: 15.22,
     },
   },
   payments: {
-    available_balance: 0.0,
+    available_balance: 5.77,
     pending_balance: 0.0,
     withdrawal_history: [],
     payment_history: [],
@@ -166,28 +166,28 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   charts: {
     revenue_chart: [
       { date: "03-03-2026", value: 0.0 },
-      { date: "04-02-2026", value: 0.0 },
+      { date: "04-03-2026", value: 5.77 },
     ],
     impressions_chart: [
       { date: "03-03-2026", value: 0.0 },
-      { date: "04-02-2026", value: 0.0 },
+      { date: "04-03-2026", value: 3897 },
     ],
     clicks_chart: [
       { date: "03-03-2026", value: 0.0 },
-      { date: "04-02-2026", value: 0.0 },
+      { date: "04-03-2026", value: 78 },
     ],
     ctr_chart: [
       { date: "03-03-2026", value: 0.0 },
-      { date: "04-02-2026", value: 0.0 },
+      { date: "04-03-2026", value: 1.22 },
     ],
     ecpm_chart: [
       { date: "03-03-2026", value: 0.0 },
-      { date: "04-02-2026", value: 0.0 },
+      { date: "04-03-2026", value: 15.22 },
     ],
   },
   recent_activity: [
     { type: "Revenue Update", date: "03-03-2026", value: 0.0 },
-    { type: "Revenue Update", date: "04-02-2026", value: 0.0 },
+    { type: "Revenue Update", date: "04-03-2026", value: 5.77 },
   ],
 }
 
