@@ -96,17 +96,10 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     ecpm: "0.00",
   }))
 
-  const recentActivityData = (config?.recent_activity ?? []).map((activity: any) => ({
-    date: activity.date,
-    impressions: 0,
-    clicks: 0,
-    revenue: activity.value,
-    ctr: "0.00%",
-    ecpm: "0.00",
-  }))
+  const recentActivityData = allReportData.slice().reverse()
 
   const latestActivity = {
-    date: "Mar 3, 2026",
+    date: "Apr 3, 2026",
     revenue: config?.dashboard_data?.today?.revenue ?? 0,
     impressions: config?.dashboard_data?.today?.impressions ?? 0,
     clicks: config?.dashboard_data?.today?.clicks ?? 0,
