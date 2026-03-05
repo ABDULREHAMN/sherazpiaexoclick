@@ -87,14 +87,22 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
   const totalEarnings = config?.dashboard_data?.today?.revenue ?? 0
   const nextWithdrawalDate = config?.withdrawal_section?.last_withdrawal_date ?? ""
 
-  const allReportData = (config?.charts?.revenue_chart ?? []).map((entry: any) => ({
-    date: entry.date,
-    impressions: 0,
-    clicks: 0,
-    revenue: entry.value,
-    ctr: "0.00%",
-    ecpm: "0.00",
-  }))
+  const allReportData = (config?.charts?.revenue_chart ?? []).map((entry: any) => {
+    // Find corresponding data from other charts for the same date
+    const impressionEntry = (config?.charts?.impressions_chart ?? []).find((e: any) => e.date === entry.date)
+    const clickEntry = (config?.charts?.clicks_chart ?? []).find((e: any) => e.date === entry.date)
+    const ctrEntry = (config?.charts?.ctr_chart ?? []).find((e: any) => e.date === entry.date)
+    const ecpmEntry = (config?.charts?.ecpm_chart ?? []).find((e: any) => e.date === entry.date)
+
+    return {
+      date: entry.date,
+      impressions: impressionEntry?.value ?? 0,
+      clicks: clickEntry?.value ?? 0,
+      revenue: entry.value,
+      ctr: `${(ctrEntry?.value ?? 0).toFixed(2)}%`,
+      ecpm: `$${(ecpmEntry?.value ?? 0).toFixed(2)}`,
+    }
+  })
 
   const recentActivityData = allReportData.slice().reverse()
 
