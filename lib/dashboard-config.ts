@@ -133,27 +133,27 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   dashboard_data: {
     today: {
-      revenue: 12.11,
-      impressions: 5332,
-      clicks: 87,
+      revenue: 21.11,
+      impressions: 7642,
+      clicks: 91,
       ctr: 1.22,
-      ecpm: 21.11,
+      ecpm: 25.12,
     },
-    this_month: { revenue: 38.22 },
+    this_month: { revenue: 50.22 },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 38.22 },
+    last_6_month: { revenue: 50.22 },
   },
   statistics_report: {
     today: {
-      revenue: 12.11,
-      impressions: 5332,
-      clicks: 87,
+      revenue: 21.11,
+      impressions: 7642,
+      clicks: 91,
       ctr: 1.22,
-      ecpm: 21.11,
+      ecpm: 25.12,
     },
   },
   payments: {
-    available_balance: 38.11,
+    available_balance: 50.22,
     pending_balance: 0.0,
     withdrawal_history: [],
     payment_history: [],
@@ -167,17 +167,17 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     revenue_chart: [
       { date: "03-03-2026", value: 0.0 },
       { date: "04-03-2026", value: 26.01 },
-      { date: "05-03-2026", value: 12.11 },
+      { date: "05-03-2026", value: 21.11 },
     ],
     impressions_chart: [
       { date: "03-03-2026", value: 0.0 },
       { date: "04-03-2026", value: 8786 },
-      { date: "05-03-2026", value: 5332 },
+      { date: "05-03-2026", value: 7642 },
     ],
     clicks_chart: [
       { date: "03-03-2026", value: 0.0 },
       { date: "04-03-2026", value: 120 },
-      { date: "05-03-2026", value: 87 },
+      { date: "05-03-2026", value: 91 },
     ],
     ctr_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -187,17 +187,17 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     ecpm_chart: [
       { date: "03-03-2026", value: 0.0 },
       { date: "04-03-2026", value: 17.66 },
-      { date: "05-03-2026", value: 21.11 },
+      { date: "05-03-2026", value: 25.12 },
     ],
   },
   recent_activity: [
     { type: "Revenue Update", date: "03-03-2026", value: 0.0 },
     { type: "Revenue Update", date: "04-03-2026", value: 26.01 },
-    { type: "Revenue Update", date: "05-03-2026", value: 12.11 },
+    { type: "Revenue Update", date: "05-03-2026", value: 21.11 },
     { type: "Impression Update", date: "04-03-2026", value: 8786 },
-    { type: "Impression Update", date: "05-03-2026", value: 5332 },
+    { type: "Impression Update", date: "05-03-2026", value: 7642 },
     { type: "Click Update", date: "04-03-2026", value: 120 },
-    { type: "Click Update", date: "05-03-2026", value: 87 },
+    { type: "Click Update", date: "05-03-2026", value: 91 },
   ],
 }
 
