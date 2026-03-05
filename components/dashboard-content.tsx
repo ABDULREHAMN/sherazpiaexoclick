@@ -949,15 +949,15 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">This Month</span>
-                    <span className="text-xl font-bold text-green-600">${(0.003).toFixed(2)}</span>
+                    <span className="text-xl font-bold text-green-600">${(config?.dashboard_data?.this_month?.revenue ?? 0).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Last Month</span>
-                    <span className="text-lg font-semibold text-gray-700">$0.00</span>
+                    <span className="text-lg font-semibold text-gray-700">${(config?.dashboard_data?.last_month?.revenue ?? 0).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Growth Rate</span>
-                    <span className="text-sm font-medium text-green-600">0%</span>
+                    <span className="text-sm text-gray-600">Last 6 Months</span>
+                    <span className="text-xl font-bold text-green-600">${(config?.dashboard_data?.last_6_month?.revenue ?? 0).toFixed(2)}</span>
                   </div>
                 </div>
               </Card>
