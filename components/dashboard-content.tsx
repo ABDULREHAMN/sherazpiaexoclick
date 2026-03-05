@@ -633,10 +633,10 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     }
   }, [filteredReportData])
 
-  // Display totals - use calculated when filters are active, otherwise use fixed totals
-  const displayTotalRevenue = dashboardDateRange !== null ? calculatedTotalRevenue : 0 // Updated fixed total
-  const displayTotalClicks = dashboardDateRange !== null ? calculatedTotalClicks : 0
-  const displayTotalImpressions = dashboardDateRange !== null ? calculatedTotalImpressions : 0
+  // Display totals - calculate from all available data by default
+  const displayTotalRevenue = calculatedTotalRevenue
+  const displayTotalClicks = calculatedTotalClicks
+  const displayTotalImpressions = calculatedTotalImpressions
 
   const calculateWeekOverWeekGrowth = () => {
     const dataToCalculate = dashboardDateRange ? filteredReportData : allReportData
