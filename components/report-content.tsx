@@ -7,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 const reportData = [
   { date: "03-03-2026", impressions: "0", clicks: "0", ctr: "0.00%", ecpm: "$0.00", revenue: "$0.00" },
   { date: "04-03-2026", impressions: "8786", clicks: "120", ctr: "1.22%", ecpm: "$17.66", revenue: "$26.01" },
-  { date: "05-03-2026", impressions: "789", clicks: "5", ctr: "1.22%", ecpm: "$18.11", revenue: "$0.98" },
+  { date: "05-03-2026", impressions: "5332", clicks: "87", ctr: "1.22%", ecpm: "$21.11", revenue: "$12.11" },
 ]
 
 const statisticsTotals = {
