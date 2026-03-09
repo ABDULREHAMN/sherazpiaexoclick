@@ -133,27 +133,27 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   dashboard_data: {
     today: {
-      revenue: 13.88,
-      impressions: 5635,
-      clicks: 87,
+      revenue: 26.88,
+      impressions: 7835,
+      clicks: 98,
       ctr: 1.22,
-      ecpm: 24.87,
+      ecpm: 25.87,
     },
-    this_month: { revenue: 145.22 },
+    this_month: { revenue: 158.22 },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 145.22 },
+    last_6_month: { revenue: 158.22 },
   },
   statistics_report: {
     today: {
-      revenue: 13.88,
-      impressions: 5635,
-      clicks: 87,
+      revenue: 26.88,
+      impressions: 7835,
+      clicks: 98,
       ctr: 1.22,
-      ecpm: 24.87,
+      ecpm: 25.87,
     },
   },
   payments: {
-    available_balance: 145.22,
+    available_balance: 158.22,
     pending_balance: 0.0,
     withdrawal_history: [],
     payment_history: [],
@@ -171,7 +171,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "06-03-2026", value: 27.33 },
       { date: "07-03-2026", value: 27.33 },
       { date: "08-03-2026", value: 84.33 },
-      { date: "09-03-2026", value: 13.88 },
+      { date: "09-03-2026", value: 26.88 },
     ],
     impressions_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -180,7 +180,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "06-03-2026", value: 9865 },
       { date: "07-03-2026", value: 8982 },
       { date: "08-03-2026", value: 1906 },
-      { date: "09-03-2026", value: 5635 },
+      { date: "09-03-2026", value: 7835 },
     ],
     clicks_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -189,7 +189,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "06-03-2026", value: 197 },
       { date: "07-03-2026", value: 134 },
       { date: "08-03-2026", value: 125 },
-      { date: "09-03-2026", value: 87 },
+      { date: "09-03-2026", value: 98 },
     ],
     ctr_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -207,7 +207,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "06-03-2026", value: 26.11 },
       { date: "07-03-2026", value: 26.32 },
       { date: "08-03-2026", value: 24.87 },
-      { date: "09-03-2026", value: 24.87 },
+      { date: "09-03-2026", value: 25.87 },
     ],
   },
   recent_activity: [
@@ -217,9 +217,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     { type: "Revenue Update", date: "06-03-2026", value: 27.33 },
     { type: "Revenue Update", date: "07-03-2026", value: 27.33 },
     { type: "Revenue Update", date: "08-03-2026", value: 84.33 },
-    { type: "Revenue Update", date: "09-03-2026", value: 13.88 },
-    { type: "Impression Update", date: "09-03-2026", value: 5635 },
-    { type: "Click Update", date: "09-03-2026", value: 87 },
+    { type: "Revenue Update", date: "09-03-2026", value: 26.88 },
+    { type: "Impression Update", date: "09-03-2026", value: 7835 },
+    { type: "Click Update", date: "09-03-2026", value: 98 },
   ],
 }
 
