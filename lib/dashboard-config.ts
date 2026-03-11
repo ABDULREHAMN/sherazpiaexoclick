@@ -163,6 +163,26 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     last_withdrawal_date: "25-03-2026",
     last_withdrawal_amount: 212.42,
   },
+  payment_section: {
+    payment_method: {
+      name: "Payoneer",
+    },
+    balance: {
+      available_balance: 212.42,
+      currency: "USD",
+      display: "$212.42",
+    },
+    withdrawal_rules: {
+      minimum_payout: 200,
+      payout_cycle: "monthly",
+    },
+    next_withdrawal: {
+      date: "25-03-2026",
+    },
+    auto_system: {
+      enabled: false,
+    },
+  },
   charts: {
     revenue_chart: [
       { date: "03-03-2026", value: 0.0 },
