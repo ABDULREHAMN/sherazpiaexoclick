@@ -32,6 +32,10 @@ export function StatisticsContent() {
   const [sites, setSites] = useState("all-sites")
   const [countries, setCountries] = useState("all-countries")
   const [device, setDevice] = useState("all-devices")
+  const [generatedDate] = useState(() => ({
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+  }))
 
   // Filter data based on selected date range
   const filteredData = useMemo(() => {
@@ -261,7 +265,7 @@ export function StatisticsContent() {
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-medium">Statistics Results - {filteredData[0]?.date || "N/A"}</h3>
           <div className="text-sm text-gray-500">
-            Generated on {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString()}
+            Generated on {generatedDate.date} at {generatedDate.time}
           </div>
         </div>
 

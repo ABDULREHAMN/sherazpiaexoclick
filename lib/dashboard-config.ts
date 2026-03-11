@@ -187,6 +187,29 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       enabled: false,
     },
   },
+  payment_summary: {
+    available_balance: {
+      value: 212.42,
+      currency: "USD",
+      display: "$212.42",
+    },
+    total_payments: {
+      value: 0.0,
+      display: "$0.00",
+    },
+    next_withdrawal: {
+      date: "25-03-2026",
+      display: "25 Mar 2026",
+    },
+    withdrawal_amount: {
+      value: 212.42,
+      display: "$212.42",
+    },
+    system: {
+      auto_update: false,
+      manual_override: true,
+    },
+  },
   charts: {
     revenue_chart: [
       { date: "03-03-2026", value: 0.0 },
