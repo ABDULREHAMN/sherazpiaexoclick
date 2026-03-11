@@ -31,6 +31,8 @@ export interface DashboardConfig {
       design_change_allowed: boolean
       report_type: "today_only"
     }
+    auto_revenue_total?: boolean
+    auto_last6month_update?: boolean
   }
   ad_network: {
     name: string
@@ -108,6 +110,8 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       design_change_allowed: false,
       report_type: "today_only",
     },
+    auto_revenue_total: false,
+    auto_last6month_update: false,
   },
   ad_network: {
     name: "ExoClick",
@@ -139,9 +143,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       ctr: 1.53,
       ecpm: 27.87,
     },
-    this_month: { revenue: 212.42 },
+    this_month: { revenue: 212.42, display: "$212.42" },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 212.42 },
+    last_6_month: { revenue: 212.42, display: "$212.42", mode: "manual", locked: true },
   },
   statistics_report: {
     today: {
