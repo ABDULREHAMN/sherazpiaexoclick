@@ -71,30 +71,6 @@ export function StatisticsContent() {
 
   const totals = calculateTotals()
 
-    const totalImpressions = reportData.reduce((sum, row) => {
-      const impressions = Number.parseInt(row.impressions.replace(",", ""))
-      return sum + impressions
-    }, 0)
-
-    const totalClicks = reportData.reduce((sum, row) => {
-      const clicks = Number.parseInt(row.clicks.replace(",", ""))
-      return sum + clicks
-    }, 0)
-
-    const avgCTR = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(2) : "0.00"
-    const avgECPM = totalImpressions > 0 ? ((totalRevenue / totalImpressions) * 1000).toFixed(2) : "0.00"
-
-    return {
-      totalRevenue: totalRevenue.toFixed(3),
-      totalImpressions: totalImpressions.toLocaleString(),
-      totalClicks: totalClicks.toLocaleString(),
-      avgCTR: `${avgCTR}%`,
-      avgECPM: `$${avgECPM}`,
-    }
-  }
-
-  const totals = calculateTotals()
-
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">

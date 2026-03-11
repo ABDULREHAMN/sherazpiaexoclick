@@ -160,8 +160,8 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   withdrawal_section: {
     minimum_withdrawal: 0,
-    last_withdrawal_date: "",
-    last_withdrawal_amount: 0,
+    last_withdrawal_date: "25-03-2026",
+    last_withdrawal_amount: 212.42,
   },
   charts: {
     revenue_chart: [
