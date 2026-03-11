@@ -5,7 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 const reportData = [
-  { date: "11-03-2026", impressions: "5636", clicks: "85", ctr: "1.77%", ecpm: "$27.87", revenue: "$16.98" },
+  { date: "03-03-2026", impressions: "0", clicks: "0", ctr: "0.00%", ecpm: "$0.00", revenue: "$0.00" },
+  { date: "04-03-2026", impressions: "4987", clicks: "76", ctr: "2.00%", ecpm: "$20.11", revenue: "$24.01" },
+  { date: "05-03-2026", impressions: "5123", clicks: "81", ctr: "1.50%", ecpm: "$23.10", revenue: "$25.45" },
+  { date: "06-03-2026", impressions: "5343", clicks: "84", ctr: "1.33%", ecpm: "$24.98", revenue: "$26.43" },
+  { date: "07-03-2026", impressions: "5320", clicks: "83", ctr: "1.22%", ecpm: "$25.00", revenue: "$28.32" },
+  { date: "08-03-2026", impressions: "5213", clicks: "79", ctr: "1.00%", ecpm: "$24.00", revenue: "$26.78" },
+  { date: "09-03-2026", impressions: "5236", clicks: "80", ctr: "1.00%", ecpm: "$25.00", revenue: "$26.44" },
+  { date: "10-03-2026", impressions: "5321", clicks: "86", ctr: "1.80%", ecpm: "$25.50", revenue: "$26.33" },
+  { date: "11-03-2026", impressions: "5636", clicks: "85", ctr: "1.77%", ecpm: "$27.87", revenue: "$27.33" },
 ]
 
 const statisticsTotals = {
