@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 const reportData = [
-  { date: "10-03-2026", impressions: "8736", clicks: "176", ctr: "1.22%", ecpm: "$27.33", revenue: "$26.33" },
-  { date: "11-03-2026", impressions: "566", clicks: "5", ctr: "1.77%", ecpm: "$27.87", revenue: "$1.22" },
+  { date: "11-03-2026", impressions: "5636", clicks: "85", ctr: "1.77%", ecpm: "$27.87", revenue: "$16.98" },
 ]
 
 const statisticsTotals = {
