@@ -76,7 +76,7 @@ export function PaymentContent({ onNavigate }: PaymentContentProps) {
       status: "Active",
       isDefault: true,
       priority: 1,
-      addedDate: "Jan 15, 2026",
+      addedDate: "Mar 03, 2026",
     },
   ])
 
@@ -135,12 +135,12 @@ export function PaymentContent({ onNavigate }: PaymentContentProps) {
     return () => clearInterval(interval)
   }, [withdrawalHistory])
 
-  const availableBalance = 0
+  const availableBalance = 212.42$
   const pendingBalance = 0
   const totalEarnings = 0
   const totalPayments = 0
   const thisMonthEarnings = 0
-  const nextWithdrawalDate = ""
+  const nextWithdrawalDate = "25 Mar 2026"
 
   const paymentEntries = []
 
@@ -315,12 +315,12 @@ Generated on: ${new Date().toLocaleDateString()}
       paymentMethods.map((m) =>
         m.id === selectedMethod.id
           ? {
-              ...m,
-              accountHolderName: formData.accountHolderName,
-              email: formData.email,
-              country: formData.country,
-              currency: formData.currency,
-            }
+            ...m,
+            accountHolderName: formData.accountHolderName,
+            email: formData.email,
+            country: formData.country,
+            currency: formData.currency,
+          }
           : m,
       ),
     )
@@ -728,9 +728,8 @@ Generated on: ${new Date().toLocaleDateString()}
             {[1, 2, 3].map((step) => (
               <div key={step} className="flex items-center">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                    addMethodStep >= step ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"
-                  }`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${addMethodStep >= step ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"
+                    }`}
                 >
                   {addMethodStep > step ? <Check className="h-4 w-4" /> : step}
                 </div>
