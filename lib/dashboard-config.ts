@@ -141,7 +141,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     },
     this_month: { revenue: 212.42 },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 212.42 },
+    last_6_month: { revenue: 212.45 },
   },
   statistics_report: {
     today: {
