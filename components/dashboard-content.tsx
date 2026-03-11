@@ -857,18 +857,18 @@ Top Country of Day: ${topCountryOfDay.country} ($${topCountryOfDay.revenue.toFix
 
 Country Revenue Breakdown:
 ${Object.entries(getCountryRevenueBreakdown())
-  .map(([country, revenue]) => `  ${country}: $${revenue.toFixed(2)}`)
-  .join("\n")}
+          .map(([country, revenue]) => `  ${country}: $${revenue.toFixed(2)}`)
+          .join("\n")}
 
 Best Hour Per Country:
 ${Object.entries(bestHourPerCountry_old)
-  .map(([country, data]) => `  ${country}: ${data.hour}:00`)
-  .join("\n")}
+          .map(([country, data]) => `  ${country}: ${data.hour}:00`)
+          .join("\n")}
 
 Top Keyword Per Country:
 ${Object.entries(topKeywordPerCountry_old)
-  .map(([country, data]) => `  ${country}: ${data.keyword}`)
-  .join("\n")}
+          .map(([country, data]) => `  ${country}: ${data.keyword}`)
+          .join("\n")}
 
 DETAILED DATA
 ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Impressions} | Clicks: ${d.Clicks}`).join("\n")}
@@ -1204,13 +1204,13 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
         <StatsCard title="LAST MONTH" value="$0.00" />
         <StatsCard
           title="THIS MONTH FORECAST"
-          value="$0.00"
+          value="$452.00"
           badge={{
-            text: "0%",
+            text: "10%",
             color: "bg-gray-500",
           }}
         />
-        <StatsCard title="LAST 6 MONTHS" value={`$${totalEarnings.toFixed(3)}`} />
+        <StatsCard title="LAST 6 MONTHS" value="$212.42" />
       </div>
 
       {/* Action Buttons */}
