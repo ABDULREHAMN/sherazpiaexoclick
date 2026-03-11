@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Dashboard } from "@/components/dashboard"
+import { StatisticsContent } from "@/components/statistics-content"
 
 export default function StatisticsPage() {
   const router = useRouter()
@@ -15,5 +15,5 @@ export default function StatisticsPage() {
     }
   }, [router])
 
-  return <Dashboard />
+  return <StatisticsContent />
 }
