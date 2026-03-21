@@ -137,27 +137,27 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   dashboard_data: {
     today: {
-      revenue: 39.0,
-      impressions: 5380,
+      revenue: 40.0,
+      impressions: 4780,
       clicks: 210,
       ctr: 1.77,
-      ecpm: 83.90,
+      ecpm: 49.31,
     },
-    this_month: { revenue: 1916.19, display: "$1916.19" },
-    last_month: { revenue: 820.50 },
-    last_6_month: { revenue: 2615.96, display: "$2615.96", mode: "manual", locked: true },
+    this_month: { revenue: 614.25, display: "$614.25" },
+    last_month: { revenue: 0.0 },
+    last_6_month: { revenue: 614.25, display: "$614.25", mode: "manual", locked: true },
   },
   statistics_report: {
     today: {
-      revenue: 39.0,
-      impressions: 5380,
+      revenue: 40.0,
+      impressions: 4780,
       clicks: 210,
       ctr: 1.77,
-      ecpm: 83.90,
+      ecpm: 49.31,
     },
   },
   payments: {
-    available_balance: 1115.39,
+    available_balance: 614.25,
     pending_balance: 0.0,
     withdrawal_history: [],
     payment_history: [],
@@ -172,9 +172,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       name: "Payoneer",
     },
     balance: {
-      available_balance: 1115.39,
+      available_balance: 614.25,
       currency: "USD",
-      display: "$1115.39",
+      display: "$614.25",
     },
     withdrawal_rules: {
       minimum_payout: 200,
@@ -189,9 +189,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   payment_summary: {
     available_balance: {
-      value: 1115.39,
+      value: 614.25,
       currency: "USD",
-      display: "$1115.39",
+      display: "$614.25",
     },
     total_payments: {
       value: 0.0,
@@ -230,7 +230,6 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "18-03-2026", value: 45.38 },
       { date: "19-03-2026", value: 39.35 },
       { date: "20-03-2026", value: 40.0 },
-      { date: "21-03-2026", value: 39.0 },
     ],
     impressions_chart: [
       { date: "03-03-2026", value: 0 },
@@ -251,7 +250,6 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "18-03-2026", value: 12321 },
       { date: "19-03-2026", value: 11060 },
       { date: "20-03-2026", value: 4780 },
-      { date: "21-03-2026", value: 5380 },
     ],
     clicks_chart: [
       { date: "03-03-2026", value: 0 },
@@ -272,7 +270,6 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "18-03-2026", value: 310 },
       { date: "19-03-2026", value: 310 },
       { date: "20-03-2026", value: 210 },
-      { date: "21-03-2026", value: 210 },
     ],
     ctr_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -293,7 +290,6 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "18-03-2026", value: 1.77 },
       { date: "19-03-2026", value: 1.77 },
       { date: "20-03-2026", value: 1.77 },
-      { date: "21-03-2026", value: 1.77 },
     ],
     ecpm_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -314,13 +310,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "18-03-2026", value: 47.38 },
       { date: "19-03-2026", value: 49.31 },
       { date: "20-03-2026", value: 49.31 },
-      { date: "21-03-2026", value: 83.90 },
     ],
   },
   recent_activity: [
-    { type: "Revenue Update", date: "21-03-2026", value: 39.0, domain: "fancydiamondchain.com" },
-    { type: "Impression Update", date: "21-03-2026", value: 5380, domain: "fancydiamondchain.com" },
-    { type: "Click Update", date: "21-03-2026", value: 210, domain: "fancydiamondchain.com" },
     { type: "Revenue Update", date: "20-03-2026", value: 40.0, domain: "fancydiamondchain.com" },
     { type: "Impression Update", date: "20-03-2026", value: 4780, domain: "fancydiamondchain.com" },
     { type: "Click Update", date: "20-03-2026", value: 210, domain: "fancydiamondchain.com" },
