@@ -28,8 +28,9 @@ const reportData = [
   { date: "23-03-2026", impressions: "12370", clicks: "331", ctr: "1.77%", ecpm: "$60.00", revenue: "$59.35" },
   { date: "24-03-2026", impressions: "12480", clicks: "335", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.44" },
   { date: "25-03-2026", impressions: "12730", clicks: "331", ctr: "1.77%", ecpm: "$60.00", revenue: "$62.55" },
-  { date: "26-03-2026", impressions: "12280", clicks: "333", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.70" },
-  { date: "27-03-2026", impressions: "3267", clicks: "135", ctr: "1.77%", ecpm: "$18.35", revenue: "$17.35" },
+  { date: "26-03-2026", impressions: "12280", clicks: "10", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.70" },
+  { date: "27-03-2026", impressions: "12380", clicks: "310", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.00" },
+  { date: "28-03-2026", impressions: "3780", clicks: "187", ctr: "1.77%", ecpm: "$62.38", revenue: "$22.35" },
 ]
 
 const statisticsTotals = {
