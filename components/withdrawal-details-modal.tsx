@@ -70,8 +70,7 @@ Withdrawal Amount: ${withdrawal.amount}
 Currency: USD
 Processing Time: 8–10 business days
 Processing Type: Manual Review
-Withdrawal Schedule: Withdrawals are processed twice per month only (12th and 25th)
-Next Withdrawal Date: January 12, 2026
+Withdrawal Schedule: Withdrawals are processed twice per month only. Available withdrawal dates are the 14th and 29th.
 
 TRANSACTION TIMELINE:
 ✓ Withdrawal Requested - ${withdrawal.date}
@@ -270,12 +269,8 @@ This invoice is digitally signed and verified.
                 <div className="col-span-2">
                   <div className={`text-xs ${textSecondary} uppercase tracking-wide mb-1.5`}>Withdrawal Schedule</div>
                   <div className={`font-semibold ${textPrimary}`}>
-                    Withdrawals are processed twice per month only. Available withdrawal dates are the 12th and 25th.
+                    Withdrawals are processed twice per month only. Available withdrawal dates are the 14th and 29th.
                   </div>
-                </div>
-                <div className="col-span-2">
-                  <div className={`text-xs ${textSecondary} uppercase tracking-wide mb-1.5`}>Next Withdrawal Date</div>
-                  <div className={`font-semibold ${textPrimary}`}>January 12, 2026</div>
                 </div>
               </div>
             </div>
@@ -374,11 +369,11 @@ This invoice is digitally signed and verified.
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className={`${textSecondary} font-medium`}>Gross Amount</span>
-                  <span className={`font-semibold ${textPrimary}`}>{withdrawal.grossAmount}</span>
+                  <span className={`font-semibold ${textPrimary}`}>$1455.00</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className={`${textSecondary} font-medium`}>Withholding Tax (5%)</span>
-                  <span className={`font-semibold ${textPrimary}`}>-{withdrawal.tax}</span>
+                  <span className={`font-semibold ${textPrimary}`}>-$72.75</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className={`${textSecondary} font-medium`}>Fees</span>
@@ -386,7 +381,7 @@ This invoice is digitally signed and verified.
                 </div>
                 <div className={`flex justify-between items-center pt-3 border-t-2 ${borderColor}`}>
                   <span className={`font-bold ${textPrimary} text-base`}>Net Amount Paid</span>
-                  <span className={`font-bold text-blue-600 text-xl`}>{withdrawal.amount}</span>
+                  <span className={`font-bold text-blue-600 text-xl`}>$1,382.25</span>
                 </div>
               </div>
             </div>
