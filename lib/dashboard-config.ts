@@ -143,9 +143,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       ctr: 1.77,
       ecpm: 33.35,
     },
-    this_month: { revenue: 1186.55, display: "$1186.55" },
+    this_month: { revenue: 1226.55, display: "$1226.55" },
     last_month: { revenue: 0.0 },
-    last_6_month: { revenue: 1186.55, display: "$1186.55", mode: "manual", locked: true },
+    last_6_month: { revenue: 1226.55, display: "$1226.55", mode: "manual", locked: true },
   },
   statistics_report: {
     today: {
@@ -157,24 +157,36 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     },
   },
   payments: {
-    available_balance: 141.00,
+    available_balance: 140.00,
     pending_balance: 1055.00,
-    withdrawal_history: [],
+    withdrawal_history: [
+      {
+        id: "WD-29032026",
+        date: "29-03-2026",
+        amount: 1055.00,
+        method: "Payoneer",
+        status: "Processing",
+        note: "Withdrawal initiated, processing 8-10 days",
+      },
+    ],
     payment_history: [],
   },
   withdrawal_section: {
     minimum_withdrawal: 0,
-    last_withdrawal_date: "30-03-2026",
+    last_withdrawal_date: "29-03-2026",
     last_withdrawal_amount: 1055.00,
     pending_withdrawal: {
+      id: "WD-29032026",
       amount: 1055.00,
+      request_date: "29-03-2026",
       status: "Processing",
-      processing_days: "8-10 days",
+      processing_time: "8-10 days",
+      method: "Payoneer",
       steps: [
-        { step: 1, name: "Request Submitted", status: "Completed" },
-        { step: 2, name: "Under Review", status: "Pending" },
-        { step: 3, name: "Payment Approved", status: "Pending" },
-        { step: 4, name: "Payment Sent", status: "Pending" },
+        { step: 1, name: "Request Submitted", status: "completed" },
+        { step: 2, name: "Under Review", status: "pending" },
+        { step: 3, name: "Payment Approved", status: "pending" },
+        { step: 4, name: "Payment Sent", status: "pending" },
       ],
     },
   },
@@ -183,9 +195,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       name: "Payoneer",
     },
     balance: {
-      available_balance: 141.00,
+      available_balance: 140.00,
       currency: "USD",
-      display: "$141.00",
+      display: "$140.00",
     },
     withdrawal_rules: {
       minimum_payout: 200,
@@ -200,9 +212,9 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   },
   payment_summary: {
     available_balance: {
-      value: 141.00,
+      value: 140.00,
       currency: "USD",
-      display: "$141.00",
+      display: "$140.00",
     },
     total_payments: {
       value: 0.0,
