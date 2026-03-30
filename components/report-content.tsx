@@ -5,34 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 const reportData = [
-  { date: "03-03-2026", impressions: "0", clicks: "0", ctr: "0.00%", ecpm: "$0.00", revenue: "$0.00" },
-  { date: "04-03-2026", impressions: "4987", clicks: "76", ctr: "2.00%", ecpm: "$20.11", revenue: "$24.01" },
-  { date: "05-03-2026", impressions: "5123", clicks: "81", ctr: "1.50%", ecpm: "$23.10", revenue: "$25.45" },
-  { date: "06-03-2026", impressions: "5343", clicks: "84", ctr: "1.33%", ecpm: "$24.98", revenue: "$26.43" },
-  { date: "07-03-2026", impressions: "5320", clicks: "83", ctr: "1.22%", ecpm: "$25.00", revenue: "$28.32" },
-  { date: "08-03-2026", impressions: "5213", clicks: "79", ctr: "1.00%", ecpm: "$24.00", revenue: "$26.78" },
-  { date: "09-03-2026", impressions: "5236", clicks: "80", ctr: "1.00%", ecpm: "$25.00", revenue: "$26.44" },
-  { date: "10-03-2026", impressions: "5321", clicks: "86", ctr: "1.80%", ecpm: "$25.50", revenue: "$26.33" },
-  { date: "11-03-2026", impressions: "5636", clicks: "85", ctr: "1.77%", ecpm: "$27.87", revenue: "$16.98" },
-  { date: "12-03-2026", impressions: "4433", clicks: "102", ctr: "1.77%", ecpm: "$40.55", revenue: "$47.55" },
-  { date: "13-03-2026", impressions: "10222", clicks: "292", ctr: "1.77%", ecpm: "$41.33", revenue: "$42.22" },
-  { date: "14-03-2026", impressions: "12315", clicks: "341", ctr: "1.77%", ecpm: "$41.63", revenue: "$45.00" },
-  { date: "15-03-2026", impressions: "12317", clicks: "343", ctr: "1.77%", ecpm: "$42.00", revenue: "$39.00" },
-  { date: "16-03-2026", impressions: "11721", clicks: "310", ctr: "1.77%", ecpm: "$39.10", revenue: "$30.00" },
-  { date: "17-03-2026", impressions: "12380", clicks: "310", ctr: "1.77%", ecpm: "$39.30", revenue: "$43.30" },
-  { date: "18-03-2026", impressions: "12321", clicks: "310", ctr: "1.77%", ecpm: "$47.38", revenue: "$45.38" },
-  { date: "19-03-2026", impressions: "11060", clicks: "310", ctr: "1.77%", ecpm: "$49.31", revenue: "$39.35" },
-  { date: "20-03-2026", impressions: "12380", clicks: "310", ctr: "1.77%", ecpm: "$49.31", revenue: "$45.00" },
-  { date: "21-03-2026", impressions: "12343", clicks: "340", ctr: "1.77%", ecpm: "$56.33", revenue: "$50.30" },
-  { date: "22-03-2026", impressions: "12380", clicks: "328", ctr: "1.77%", ecpm: "$58.00", revenue: "$50.00" },
-  { date: "23-03-2026", impressions: "12370", clicks: "331", ctr: "1.77%", ecpm: "$60.00", revenue: "$59.35" },
-  { date: "24-03-2026", impressions: "12480", clicks: "335", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.44" },
-  { date: "25-03-2026", impressions: "12730", clicks: "331", ctr: "1.77%", ecpm: "$60.00", revenue: "$62.55" },
-  { date: "26-03-2026", impressions: "12280", clicks: "10", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.70" },
-  { date: "27-03-2026", impressions: "12380", clicks: "310", ctr: "1.77%", ecpm: "$60.00", revenue: "$60.00" },
-  { date: "28-03-2026", impressions: "12312", clicks: "312", ctr: "1.77%", ecpm: "$62.38", revenue: "$60.00" },
-  { date: "29-03-2026", impressions: "120180", clicks: "310", ctr: "1.77%", ecpm: "$60.00", revenue: "$51.35" },
-  { date: "30-03-2026", impressions: "4180", clicks: "211", ctr: "1.77%", ecpm: "$33.35", revenue: "$26.35" },
+  { date: "29-03-2026", impressions: "12100", clicks: "300", ctr: "2.48%", ecpm: "$83.10", revenue: "$83.10" },
+  { date: "30-03-2026", impressions: "4120", clicks: "100", ctr: "2.43%", ecpm: "$83.21", revenue: "$31.10" },
 ]
 
 const statisticsTotals = {
