@@ -151,10 +151,18 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     today: {
       revenue: 25.35,
       impressions: 4480,
-      clicks: 120,
+      clicks: 100,
       ctr: 1.77,
       ecpm: 70.35,
     },
+    last_7_days: [
+      { date: "31-03-2026", revenue: 25.35, impressions: 4480, clicks: 100 },
+      { date: "30-03-2026", revenue: 65.35, impressions: 12380, clicks: 310 },
+    ],
+    last_30_days: [
+      { date: "31-03-2026", revenue: 25.35 },
+      { date: "30-03-2026", revenue: 65.35 },
+    ],
   },
   payments: {
     available_balance: 135.90,
@@ -337,7 +345,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       { date: "28-03-2026", value: 312 },
       { date: "29-03-2026", value: 310 },
       { date: "30-03-2026", value: 310 },
-      { date: "31-03-2026", value: 120 },
+      { date: "31-03-2026", value: 100 },
     ],
     ctr_chart: [
       { date: "03-03-2026", value: 0.0 },
@@ -641,7 +649,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   recent_activity: [
     { type: "Revenue Update", date: "31-03-2026", value: 25.35, domain: "fancydiamondchain.com" },
     { type: "Impression Update", date: "31-03-2026", value: 4480, domain: "fancydiamondchain.com" },
-    { type: "Click Update", date: "31-03-2026", value: 120, domain: "fancydiamondchain.com" },
+    { type: "Click Update", date: "31-03-2026", value: 100, domain: "fancydiamondchain.com" },
     { type: "Revenue Update", date: "30-03-2026", value: 65.35, domain: "fancydiamondchain.com" },
     { type: "Impression Update", date: "30-03-2026", value: 12380, domain: "fancydiamondchain.com" },
     { type: "Click Update", date: "30-03-2026", value: 310, domain: "fancydiamondchain.com" },
