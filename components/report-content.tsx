@@ -142,7 +142,7 @@ export function ReportContent() {
       {/* Report Table */}
       <Card className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium">Report Results - 03-03-2026</h3>
+          <h3 className="text-lg font-medium">Report Results - Latest (02-04-2026)</h3>
           <div className="text-sm text-gray-500">
             Generated on {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString()}
           </div>
