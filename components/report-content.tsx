@@ -11,7 +11,12 @@ const reportData: Array<{
   ctr: string
   ecpm: string
   revenue: string
-}> = []
+}> = [
+  { date: "02-04-2026", impressions: "12,280", clicks: "345", ctr: "1.77%", ecpm: "$83.10", revenue: "$68.25" },
+  { date: "03-04-2026", impressions: "12,290", clicks: "365", ctr: "1.77%", ecpm: "$84.20", revenue: "$72.40" },
+  { date: "04-04-2026", impressions: "12,285", clicks: "355", ctr: "1.77%", ecpm: "$82.90", revenue: "$66.80" },
+  { date: "05-04-2026", impressions: "4,280", clicks: "205", ctr: "1.77%", ecpm: "$83.00", revenue: "$34.00" },
+]
 
 const statisticsTotals = {
   impressions: 0,
@@ -117,7 +122,7 @@ export function ReportContent() {
       {/* Report Table */}
       <Card className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium">Report Results - Latest (02-04-2026)</h3>
+          <h3 className="text-lg font-medium">Report Results - Latest (05-04-2026)</h3>
           <div className="text-sm text-gray-500">
             Generated on {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString()}
           </div>

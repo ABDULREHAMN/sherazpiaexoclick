@@ -1,7 +1,8 @@
 /**
- * Dashboard Configuration System - RESET_ALL MODE
- * All caches cleared, all state reset to empty/zero
- * System in clean state ready for fresh data
+ * Dashboard Configuration System - FULL_OVERRIDE MODE
+ * Hard override with new dataset - 05-04-2026 LATEST
+ * All old data cleared, all caches disabled
+ * System in production mode with fresh data
  */
 
 export interface DashboardMetrics {
@@ -14,19 +15,17 @@ export interface DashboardMetrics {
 
 export interface DashboardConfig {
   system: {
-    mode: "RESET_ALL"
+    mode: "FULL_OVERRIDE"
     clear_cache: boolean
-    clear_local_storage: boolean
-    clear_dashboard_state: boolean
-    clear_statistics: boolean
-    clear_recent_activity: boolean
-    clear_payments: boolean
-    clear_withdrawal: boolean
-    force_reload: boolean
+    clear_old_data: boolean
+    disable_auto_fetch: boolean
+    disable_local_storage_override: boolean
+    force_state_replace: boolean
+    force_ui_refresh: boolean
   }
   dashboard_data: {
     today: {
-      date: null
+      date: string
       revenue: number
       impressions: number
       clicks: number
@@ -34,53 +33,135 @@ export interface DashboardConfig {
       ecpm: number
     }
     this_month: number
-    last_month: number
     last_6_month: number
   }
-  statistics_report: Array<any>
-  recent_activity: Array<any>
+  statistics_report: Array<{ date: string; revenue: number; impressions: number; clicks: number }>
+  recent_activity: Array<{
+    date: string
+    domain: string
+    impressions: number
+    clicks: number
+    ctr: number
+    ecpm: number
+    revenue: number
+  }>
   balance: {
     available_balance: number
   }
-  withdrawal: {
+  payments: {
+    available_balance: number
     pending: number
+    next_withdrawal: string
   }
   withdrawal_history: Array<any>
+  charts: {
+    revenue_chart: Array<{ date: string; value: number }>
+    impressions_chart: Array<{ date: string; value: number }>
+    clicks_chart: Array<{ date: string; value: number }>
+    ecpm_chart: Array<{ date: string; value: number }>
+  }
 }
 
-// RESET_ALL CONFIGURATION - CLEAN STATE
+// FULL_OVERRIDE CONFIGURATION - 05-04-2026 LATEST DATA
 export const DEFAULT_CONFIG: DashboardConfig = {
   system: {
-    mode: "RESET_ALL",
+    mode: "FULL_OVERRIDE",
     clear_cache: true,
-    clear_local_storage: true,
-    clear_dashboard_state: true,
-    clear_statistics: true,
-    clear_recent_activity: true,
-    clear_payments: true,
-    clear_withdrawal: true,
-    force_reload: true,
+    clear_old_data: true,
+    disable_auto_fetch: true,
+    disable_local_storage_override: true,
+    force_state_replace: true,
+    force_ui_refresh: true,
   },
   dashboard_data: {
     today: {
-      date: null,
-      revenue: 0,
-      impressions: 0,
-      clicks: 0,
-      ctr: 0,
-      ecpm: 0,
+      date: "05-04-2026",
+      revenue: 34.00,
+      impressions: 4280,
+      clicks: 205,
+      ctr: 1.77,
+      ecpm: 83.00,
     },
-    this_month: 0,
-    last_month: 0,
-    last_6_month: 0,
+    this_month: 241.45,
+    last_6_month: 241.45,
   },
-  statistics_report: [],
-  recent_activity: [],
+  statistics_report: [
+    { date: "02-04-2026", revenue: 68.25, impressions: 12280, clicks: 345 },
+    { date: "03-04-2026", revenue: 72.40, impressions: 12290, clicks: 365 },
+    { date: "04-04-2026", revenue: 66.80, impressions: 12285, clicks: 355 },
+    { date: "05-04-2026", revenue: 34.00, impressions: 4280, clicks: 205 },
+  ],
+  recent_activity: [
+    {
+      date: "05-04-2026",
+      domain: "fancydiamondchain.com",
+      impressions: 4280,
+      clicks: 205,
+      ctr: 1.77,
+      ecpm: 83.00,
+      revenue: 34.00,
+    },
+    {
+      date: "04-04-2026",
+      domain: "fancydiamondchain.com",
+      impressions: 12285,
+      clicks: 355,
+      ctr: 1.77,
+      ecpm: 82.90,
+      revenue: 66.80,
+    },
+    {
+      date: "03-04-2026",
+      domain: "fancydiamondchain.com",
+      impressions: 12290,
+      clicks: 365,
+      ctr: 1.77,
+      ecpm: 84.20,
+      revenue: 72.40,
+    },
+    {
+      date: "02-04-2026",
+      domain: "fancydiamondchain.com",
+      impressions: 12280,
+      clicks: 345,
+      ctr: 1.77,
+      ecpm: 83.10,
+      revenue: 68.25,
+    },
+  ],
   balance: {
-    available_balance: 0,
+    available_balance: 241.45,
   },
-  withdrawal: {
+  payments: {
+    available_balance: 241.45,
     pending: 0,
+    next_withdrawal: "14-04-2026",
   },
   withdrawal_history: [],
+  charts: {
+    revenue_chart: [
+      { date: "02-04-2026", value: 68.25 },
+      { date: "03-04-2026", value: 72.40 },
+      { date: "04-04-2026", value: 66.80 },
+      { date: "05-04-2026", value: 34.00 },
+    ],
+    impressions_chart: [
+      { date: "02-04-2026", value: 12280 },
+      { date: "03-04-2026", value: 12290 },
+      { date: "04-04-2026", value: 12285 },
+      { date: "05-04-2026", value: 4280 },
+    ],
+    clicks_chart: [
+      { date: "02-04-2026", value: 345 },
+      { date: "03-04-2026", value: 365 },
+      { date: "04-04-2026", value: 355 },
+      { date: "05-04-2026", value: 205 },
+    ],
+    ecpm_chart: [
+      { date: "02-04-2026", value: 83.10 },
+      { date: "03-04-2026", value: 84.20 },
+      { date: "04-04-2026", value: 82.90 },
+      { date: "05-04-2026", value: 83.00 },
+    ],
+  },
 }
