@@ -1,8 +1,8 @@
 /**
- * Dashboard Configuration System - FULL_OVERRIDE MODE
- * Hard override with new dataset - 05-04-2026 LATEST
- * All old data cleared, all caches disabled
- * System in production mode with fresh data
+ * Dashboard Configuration System - HARD_OVERRIDE MODE
+ * Real-time live update with 06-04-2026 LATEST data
+ * All old data cleared, realtime sync enabled
+ * System in production mode with force refresh
  */
 
 export interface DashboardMetrics {
@@ -15,13 +15,14 @@ export interface DashboardMetrics {
 
 export interface DashboardConfig {
   system: {
-    mode: "FULL_OVERRIDE"
+    mode: "HARD_OVERRIDE"
     clear_cache: boolean
-    clear_old_data: boolean
-    disable_auto_fetch: boolean
-    disable_local_storage_override: boolean
-    force_state_replace: boolean
+    clear_old_state: boolean
+    disable_local_storage: boolean
+    disable_auto_sync: boolean
+    force_replace_all: boolean
     force_ui_refresh: boolean
+    realtime_apply: boolean
   }
   dashboard_data: {
     today: {
@@ -50,10 +51,21 @@ export interface DashboardConfig {
   }
   payments: {
     available_balance: number
-    pending: number
+    total_earnings: number
     next_withdrawal: string
   }
-  withdrawal_history: Array<any>
+  withdrawal_widget: {
+    show: boolean
+    status: string
+    message: string
+  }
+  withdrawal_history: Array<{
+    id: string
+    date: string
+    amount: number
+    method: string
+    status: string
+  }>
   charts: {
     revenue_chart: Array<{ date: string; value: number }>
     impressions_chart: Array<{ date: string; value: number }>
@@ -62,44 +74,55 @@ export interface DashboardConfig {
   }
 }
 
-// FULL_OVERRIDE CONFIGURATION - 05-04-2026 LATEST DATA
+// HARD_OVERRIDE CONFIGURATION - 06-04-2026 LIVE DATA
 export const DEFAULT_CONFIG: DashboardConfig = {
   system: {
-    mode: "FULL_OVERRIDE",
+    mode: "HARD_OVERRIDE",
     clear_cache: true,
-    clear_old_data: true,
-    disable_auto_fetch: true,
-    disable_local_storage_override: true,
-    force_state_replace: true,
+    clear_old_state: true,
+    disable_local_storage: true,
+    disable_auto_sync: true,
+    force_replace_all: true,
     force_ui_refresh: true,
+    realtime_apply: true,
   },
   dashboard_data: {
     today: {
-      date: "05-04-2026",
-      revenue: 34.00,
-      impressions: 4280,
+      date: "06-04-2026",
+      revenue: 40.35,
+      impressions: 4980,
       clicks: 205,
       ctr: 1.77,
-      ecpm: 83.00,
+      ecpm: 82.00,
     },
-    this_month: 241.45,
-    last_6_month: 241.45,
+    this_month: 313.15,
+    last_6_month: 313.15,
   },
   statistics_report: [
     { date: "02-04-2026", revenue: 68.25, impressions: 12280, clicks: 345 },
     { date: "03-04-2026", revenue: 72.40, impressions: 12290, clicks: 365 },
     { date: "04-04-2026", revenue: 66.80, impressions: 12285, clicks: 355 },
-    { date: "05-04-2026", revenue: 34.00, impressions: 4280, clicks: 205 },
+    { date: "05-04-2026", revenue: 65.35, impressions: 12280, clicks: 305 },
+    { date: "06-04-2026", revenue: 40.35, impressions: 4980, clicks: 205 },
   ],
   recent_activity: [
     {
-      date: "05-04-2026",
+      date: "06-04-2026",
       domain: "fancydiamondchain.com",
-      impressions: 4280,
+      impressions: 4980,
       clicks: 205,
       ctr: 1.77,
+      ecpm: 82.00,
+      revenue: 40.35,
+    },
+    {
+      date: "05-04-2026",
+      domain: "fancydiamondchain.com",
+      impressions: 12280,
+      clicks: 305,
+      ctr: 1.77,
       ecpm: 83.00,
-      revenue: 34.00,
+      revenue: 65.35,
     },
     {
       date: "04-04-2026",
@@ -130,38 +153,55 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     },
   ],
   balance: {
-    available_balance: 241.45,
+    available_balance: 313.15,
   },
   payments: {
-    available_balance: 241.45,
-    pending: 0,
+    available_balance: 313.15,
+    total_earnings: 313.15,
     next_withdrawal: "14-04-2026",
   },
-  withdrawal_history: [],
+  withdrawal_widget: {
+    show: true,
+    status: "Eligible",
+    message: "You can withdraw now",
+  },
+  withdrawal_history: [
+    {
+      id: "WD-2903",
+      date: "29-03-2026",
+      amount: 1055.00,
+      method: "Payoneer",
+      status: "Completed",
+    },
+  ],
   charts: {
     revenue_chart: [
       { date: "02-04-2026", value: 68.25 },
       { date: "03-04-2026", value: 72.40 },
       { date: "04-04-2026", value: 66.80 },
-      { date: "05-04-2026", value: 34.00 },
+      { date: "05-04-2026", value: 65.35 },
+      { date: "06-04-2026", value: 40.35 },
     ],
     impressions_chart: [
       { date: "02-04-2026", value: 12280 },
       { date: "03-04-2026", value: 12290 },
       { date: "04-04-2026", value: 12285 },
-      { date: "05-04-2026", value: 4280 },
+      { date: "05-04-2026", value: 12280 },
+      { date: "06-04-2026", value: 4980 },
     ],
     clicks_chart: [
       { date: "02-04-2026", value: 345 },
       { date: "03-04-2026", value: 365 },
       { date: "04-04-2026", value: 355 },
-      { date: "05-04-2026", value: 205 },
+      { date: "05-04-2026", value: 305 },
+      { date: "06-04-2026", value: 205 },
     ],
     ecpm_chart: [
       { date: "02-04-2026", value: 83.10 },
       { date: "03-04-2026", value: 84.20 },
       { date: "04-04-2026", value: 82.90 },
       { date: "05-04-2026", value: 83.00 },
+      { date: "06-04-2026", value: 82.00 },
     ],
   },
 }
