@@ -54,6 +54,16 @@ export interface DashboardConfig {
     total_earnings: number
     next_withdrawal: string
   }
+  withdrawal: {
+    status: string
+    available_balance: number
+    pending: {
+      amount: number
+      request_date: string
+      processing_time: string
+    }
+    next_withdrawal_date: string
+  }
   withdrawal_widget: {
     show: boolean
     status: string
@@ -160,10 +170,20 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     total_earnings: 313.15,
     next_withdrawal: "14-04-2026",
   },
+  withdrawal: {
+    status: "Pending",
+    available_balance: 313.15,
+    pending: {
+      amount: 1055.00,
+      request_date: "29-03-2026",
+      processing_time: "8-10 days",
+    },
+    next_withdrawal_date: "14-04-2026",
+  },
   withdrawal_widget: {
     show: true,
-    status: "Eligible",
-    message: "You can withdraw now",
+    status: "Pending",
+    message: "Withdrawal pending - processing in 8-10 days",
   },
   withdrawal_history: [
     {
@@ -171,7 +191,7 @@ export const DEFAULT_CONFIG: DashboardConfig = {
       date: "29-03-2026",
       amount: 1055.00,
       method: "Payoneer",
-      status: "Completed",
+      status: "Pending",
     },
   ],
   charts: {
