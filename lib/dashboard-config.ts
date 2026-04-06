@@ -205,3 +205,44 @@ export const DEFAULT_CONFIG: DashboardConfig = {
     ],
   },
 }
+
+// Configuration management utility functions
+export function loadDashboardConfig(): DashboardConfig {
+  if (typeof window === "undefined") {
+    return DEFAULT_CONFIG
+  }
+
+  try {
+    const stored = localStorage.getItem("dashboard-config")
+    if (stored) {
+      return JSON.parse(stored) as DashboardConfig
+    }
+  } catch (error) {
+    console.error("[v0] Error loading dashboard config from localStorage:", error)
+  }
+
+  return DEFAULT_CONFIG
+}
+
+export function saveDashboardConfig(config: DashboardConfig): void {
+  if (typeof window === "undefined") {
+    return
+  }
+
+  try {
+    localStorage.setItem("dashboard-config", JSON.stringify(config))
+  } catch (error) {
+    console.error("[v0] Error saving dashboard config to localStorage:", error)
+  }
+}
+
+export function updateDashboardConfig(updates: Partial<DashboardConfig>): DashboardConfig {
+  const current = loadDashboardConfig()
+  const updated = {
+    ...current,
+    ...updates,
+  } as DashboardConfig
+
+  saveDashboardConfig(updated)
+  return updated
+}
