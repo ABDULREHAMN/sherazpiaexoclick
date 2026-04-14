@@ -121,42 +121,38 @@ export default function ChangePasswordPage() {
     setIsLoading(true)
 
     try {
-      const supabase = createClient()
-
-      // First, verify current password by attempting to sign in
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-        email: (await supabase.auth.getUser()).data.user?.email || "",
-        password: currentPassword,
+      // Call secure backend endpoint instead of directly calling Supabase Auth
+      const response = await fetch("/api/auth/change-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          currentPassword,
+          newPassword,
+        }),
       })
 
-      if (signInError) {
-        setError("Current password is incorrect")
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError(data.error || "Failed to change password")
         setIsLoading(false)
         return
       }
 
-      // Update password
-      const { error: updateError } = await supabase.auth.updateUser({
-        password: newPassword,
-      })
-
-      if (updateError) {
-        setError(updateError.message || "Failed to update password")
-        setIsLoading(false)
-        return
-      }
-
-      setSuccess("Password changed successfully!")
+      setSuccess(data.message || "Password changed successfully!")
       setCurrentPassword("")
       setNewPassword("")
       setConfirmPassword("")
       setPasswordStrength(0)
 
-      // Redirect to dashboard after 2 seconds
+      // Redirect to login after 2 seconds since all sessions are invalidated
       setTimeout(() => {
-        router.push("/dashboard")
+        router.push("/login")
       }, 2000)
     } catch (err) {
+      console.error("[v0] Password change error:", err)
       setError("An error occurred. Please try again.")
     } finally {
       setIsLoading(false)
