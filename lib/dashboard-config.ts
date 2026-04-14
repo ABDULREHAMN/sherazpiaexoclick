@@ -1,8 +1,8 @@
 /**
- * Dashboard Configuration System - HARD_OVERRIDE MODE
- * Real-time live update with 06-04-2026 LATEST data
- * All old data cleared, realtime sync enabled
- * System in production mode with force refresh
+ * Dashboard Configuration System - FULL_SYSTEM_RESET MODE
+ * Complete system reset with new 11-14 April dataset
+ * All old data cleared, only new data applied
+ * Latest date: 14-04-2026
  */
 
 export interface DashboardMetrics {
@@ -15,13 +15,11 @@ export interface DashboardMetrics {
 
 export interface DashboardConfig {
   system: {
-    mode: "HARD_OVERRIDE"
-    clear_cache: boolean
-    clear_old_state: boolean
-    disable_local_storage: boolean
-    disable_auto_sync: boolean
-    force_replace_all: boolean
-    force_ui_refresh: boolean
+    mode: "FULL_SYSTEM_RESET"
+    clear_all_previous_data: boolean
+    force_replace_everything: boolean
+    disable_auto_calculation: boolean
+    disable_cache: boolean
     realtime_apply: boolean
   }
   dashboard_data: {
@@ -84,105 +82,83 @@ export interface DashboardConfig {
   }
 }
 
-// HARD_OVERRIDE CONFIGURATION - 06-04-2026 LIVE DATA
+// FULL_SYSTEM_RESET CONFIGURATION - 14-04-2026 LATEST DATA
 export const DEFAULT_CONFIG: DashboardConfig = {
   system: {
-    mode: "HARD_OVERRIDE",
-    clear_cache: true,
-    clear_old_state: true,
-    disable_local_storage: true,
-    disable_auto_sync: true,
-    force_replace_all: true,
-    force_ui_refresh: true,
+    mode: "FULL_SYSTEM_RESET",
+    clear_all_previous_data: true,
+    force_replace_everything: true,
+    disable_auto_calculation: true,
+    disable_cache: true,
     realtime_apply: true,
   },
   dashboard_data: {
     today: {
-      date: "11-04-2026",
+      date: "14-04-2026",
       revenue: 35.00,
-      impressions: 4210,
-      clicks: 190,
+      impressions: 6210,
+      clicks: 130,
       ctr: 1.77,
       ecpm: 85.00,
     },
-    this_month: 443.65,
-    last_6_month: 443.65,
+    this_month: 279.95,
+    last_6_month: 279.95,
   },
   statistics_report: [
-    { date: "06-04-2026", revenue: 81.20, impressions: 12110, clicks: 320 },
-    { date: "07-04-2026", revenue: 82.10, impressions: 12250, clicks: 330 },
-    { date: "08-04-2026", revenue: 81.75, impressions: 12300, clicks: 335 },
-    { date: "09-04-2026", revenue: 82.00, impressions: 12385, clicks: 341 },
-    { date: "10-04-2026", revenue: 81.60, impressions: 12280, clicks: 328 },
-    { date: "11-04-2026", revenue: 35.00, impressions: 4210, clicks: 190 },
+    { date: "11-04-2026", revenue: 81.20, impressions: 12210, clicks: 335 },
+    { date: "12-04-2026", revenue: 81.75, impressions: 12230, clicks: 338 },
+    { date: "13-04-2026", revenue: 82.00, impressions: 12250, clicks: 340 },
+    { date: "14-04-2026", revenue: 35.00, impressions: 6210, clicks: 130 },
   ],
   recent_activity: [
     {
-      date: "11-04-2026",
+      date: "14-04-2026",
       domain: "fancydiamondchain.com",
-      impressions: 4210,
-      clicks: 190,
+      impressions: 6210,
+      clicks: 130,
       ctr: 1.77,
       ecpm: 85.00,
       revenue: 35.00,
     },
     {
-      date: "10-04-2026",
+      date: "13-04-2026",
       domain: "fancydiamondchain.com",
-      impressions: 12280,
-      clicks: 328,
+      impressions: 12250,
+      clicks: 340,
       ctr: 1.77,
-      ecpm: 84.30,
-      revenue: 81.60,
-    },
-    {
-      date: "09-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12385,
-      clicks: 341,
-      ctr: 1.77,
-      ecpm: 85.00,
+      ecpm: 87.00,
       revenue: 82.00,
     },
     {
-      date: "08-04-2026",
+      date: "12-04-2026",
       domain: "fancydiamondchain.com",
-      impressions: 12300,
-      clicks: 335,
+      impressions: 12230,
+      clicks: 338,
       ctr: 1.77,
-      ecpm: 84.50,
+      ecpm: 86.20,
       revenue: 81.75,
     },
     {
-      date: "07-04-2026",
+      date: "11-04-2026",
       domain: "fancydiamondchain.com",
-      impressions: 12250,
-      clicks: 330,
+      impressions: 12210,
+      clicks: 335,
       ctr: 1.77,
-      ecpm: 84.10,
-      revenue: 82.10,
-    },
-    {
-      date: "06-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12110,
-      clicks: 320,
-      ctr: 1.77,
-      ecpm: 83.20,
+      ecpm: 85.50,
       revenue: 81.20,
     },
   ],
   balance: {
-    available_balance: 843.65,
+    available_balance: 279.95,
   },
   payments: {
-    available_balance: 843.65,
-    total_earnings: 843.65,
+    available_balance: 279.95,
+    total_earnings: 279.95,
     next_withdrawal: "14-04-2026",
   },
   withdrawal: {
     status: "Eligible",
-    available_balance: 843.65,
+    available_balance: 279.95,
     pending: {
       amount: 0,
       request_date: "",
@@ -206,36 +182,28 @@ export const DEFAULT_CONFIG: DashboardConfig = {
   ],
   charts: {
     revenue_chart: [
-      { date: "06-04-2026", value: 81.20 },
-      { date: "07-04-2026", value: 82.10 },
-      { date: "08-04-2026", value: 81.75 },
-      { date: "09-04-2026", value: 82.00 },
-      { date: "10-04-2026", value: 81.60 },
-      { date: "11-04-2026", value: 35.00 },
+      { date: "11-04-2026", value: 81.20 },
+      { date: "12-04-2026", value: 81.75 },
+      { date: "13-04-2026", value: 82.00 },
+      { date: "14-04-2026", value: 35.00 },
     ],
     impressions_chart: [
-      { date: "06-04-2026", value: 12110 },
-      { date: "07-04-2026", value: 12250 },
-      { date: "08-04-2026", value: 12300 },
-      { date: "09-04-2026", value: 12385 },
-      { date: "10-04-2026", value: 12280 },
-      { date: "11-04-2026", value: 4210 },
+      { date: "11-04-2026", value: 12210 },
+      { date: "12-04-2026", value: 12230 },
+      { date: "13-04-2026", value: 12250 },
+      { date: "14-04-2026", value: 6210 },
     ],
     clicks_chart: [
-      { date: "06-04-2026", value: 320 },
-      { date: "07-04-2026", value: 330 },
-      { date: "08-04-2026", value: 335 },
-      { date: "09-04-2026", value: 341 },
-      { date: "10-04-2026", value: 328 },
-      { date: "11-04-2026", value: 190 },
+      { date: "11-04-2026", value: 335 },
+      { date: "12-04-2026", value: 338 },
+      { date: "13-04-2026", value: 340 },
+      { date: "14-04-2026", value: 130 },
     ],
     ecpm_chart: [
-      { date: "06-04-2026", value: 83.20 },
-      { date: "07-04-2026", value: 84.10 },
-      { date: "08-04-2026", value: 84.50 },
-      { date: "09-04-2026", value: 85.00 },
-      { date: "10-04-2026", value: 84.30 },
-      { date: "11-04-2026", value: 85.00 },
+      { date: "11-04-2026", value: 85.50 },
+      { date: "12-04-2026", value: 86.20 },
+      { date: "13-04-2026", value: 87.00 },
+      { date: "14-04-2026", value: 85.00 },
     ],
   },
 }

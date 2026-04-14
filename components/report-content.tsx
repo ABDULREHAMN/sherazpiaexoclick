@@ -12,12 +12,10 @@ const reportData: Array<{
   ecpm: string
   revenue: string
 }> = [
-  { date: "06-04-2026", impressions: "12,110", clicks: "320", ctr: "1.77%", ecpm: "$83.20", revenue: "$81.20" },
-  { date: "07-04-2026", impressions: "12,250", clicks: "330", ctr: "1.77%", ecpm: "$84.10", revenue: "$82.10" },
-  { date: "08-04-2026", impressions: "12,300", clicks: "335", ctr: "1.77%", ecpm: "$84.50", revenue: "$81.75" },
-  { date: "09-04-2026", impressions: "12,385", clicks: "341", ctr: "1.77%", ecpm: "$85.00", revenue: "$82.00" },
-  { date: "10-04-2026", impressions: "12,280", clicks: "328", ctr: "1.77%", ecpm: "$84.30", revenue: "$81.60" },
-  { date: "11-04-2026", impressions: "4,210", clicks: "190", ctr: "1.77%", ecpm: "$85.00", revenue: "$35.00" },
+  { date: "11-04-2026", impressions: "12,210", clicks: "335", ctr: "1.77%", ecpm: "$85.50", revenue: "$81.20" },
+  { date: "12-04-2026", impressions: "12,230", clicks: "338", ctr: "1.77%", ecpm: "$86.20", revenue: "$81.75" },
+  { date: "13-04-2026", impressions: "12,250", clicks: "340", ctr: "1.77%", ecpm: "$87.00", revenue: "$82.00" },
+  { date: "14-04-2026", impressions: "6,210", clicks: "130", ctr: "1.77%", ecpm: "$85.00", revenue: "$35.00" },
 ]
 
 const statisticsTotals = {
@@ -124,7 +122,7 @@ export function ReportContent() {
       {/* Report Table */}
       <Card className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium">Report Results - Latest (11-04-2026)</h3>
+          <h3 className="text-lg font-medium">Report Results - Latest (14-04-2026)</h3>
           <div className="text-sm text-gray-500">
             Generated on {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString()}
           </div>
