@@ -1,9 +1,11 @@
 /**
- * Dashboard Configuration System - HARD_OVERRIDE MODE
- * Real-time live update with 06-04-2026 LATEST data
- * All old data cleared, realtime sync enabled
- * System in production mode with force refresh
+ * Dashboard Configuration System - AUTO_SYNC_SYSTEM MODE
+ * Dynamic calculation of totals from data entries
+ * All sections synced automatically - no hardcoded values
+ * Latest date: 14-04-2026
  */
+
+import { applyAutoCalculations, type DataEntry, type WithdrawalEntry } from "./dashboard-calculations"
 
 export interface DashboardMetrics {
   revenue: number
@@ -15,14 +17,13 @@ export interface DashboardMetrics {
 
 export interface DashboardConfig {
   system: {
-    mode: "HARD_OVERRIDE"
-    clear_cache: boolean
-    clear_old_state: boolean
-    disable_local_storage: boolean
-    disable_auto_sync: boolean
-    force_replace_all: boolean
-    force_ui_refresh: boolean
-    realtime_apply: boolean
+    mode: "AUTO_SYNC_SYSTEM"
+    auto_calculate_totals: boolean
+    auto_group_by_month: boolean
+    auto_last_6_months: boolean
+    auto_balance_after_withdrawal: boolean
+    force_consistency: boolean
+    disable_manual_override: boolean
   }
   dashboard_data: {
     today: {
@@ -82,162 +83,150 @@ export interface DashboardConfig {
     clicks_chart: Array<{ date: string; value: number }>
     ecpm_chart: Array<{ date: string; value: number }>
   }
+  _rawData?: DataEntry[]
+  _rawWithdrawals?: WithdrawalEntry[]
 }
 
-// HARD_OVERRIDE CONFIGURATION - 06-04-2026 LIVE DATA
-export const DEFAULT_CONFIG: DashboardConfig = {
-  system: {
-    mode: "HARD_OVERRIDE",
-    clear_cache: true,
-    clear_old_state: true,
-    disable_local_storage: true,
-    disable_auto_sync: true,
-    force_replace_all: true,
-    force_ui_refresh: true,
-    realtime_apply: true,
+// Raw data - source of truth for all calculations
+const RAW_DATA: DataEntry[] = [
+  { date: "11-04-2026", revenue: 81.20, impressions: 12210, clicks: 335, ecpm: 85.50 },
+  { date: "12-04-2026", revenue: 81.75, impressions: 12230, clicks: 338, ecpm: 86.20 },
+  { date: "13-04-2026", revenue: 82.00, impressions: 12250, clicks: 340, ecpm: 87.00 },
+  { date: "14-04-2026", revenue: 35.00, impressions: 12210, clicks: 130, ecpm: 85.00 },
+]
+
+const RAW_WITHDRAWALS: WithdrawalEntry[] = [
+  {
+    id: "WD-2903",
+    date: "29-03-2026",
+    amount: 1055.00,
+    status: "Completed",
+    method: "Payoneer",
   },
-  dashboard_data: {
-    today: {
-      date: "11-04-2026",
-      revenue: 35.00,
-      impressions: 4210,
-      clicks: 190,
-      ctr: 1.77,
-      ecpm: 85.00,
+]
+
+// Helper function to create config with auto-calculated values
+function createConfigWithAutoCalculations(): DashboardConfig {
+  const calcs = applyAutoCalculations(RAW_DATA, RAW_WITHDRAWALS)
+  const latestEntry = calcs.latestEntry!
+
+  return {
+    system: {
+      mode: "AUTO_SYNC_SYSTEM",
+      auto_calculate_totals: true,
+      auto_group_by_month: true,
+      auto_last_6_months: true,
+      auto_balance_after_withdrawal: true,
+      force_consistency: true,
+      disable_manual_override: false,
     },
-    this_month: 443.65,
-    last_6_month: 443.65,
-  },
-  statistics_report: [
-    { date: "06-04-2026", revenue: 81.20, impressions: 12110, clicks: 320 },
-    { date: "07-04-2026", revenue: 82.10, impressions: 12250, clicks: 330 },
-    { date: "08-04-2026", revenue: 81.75, impressions: 12300, clicks: 335 },
-    { date: "09-04-2026", revenue: 82.00, impressions: 12385, clicks: 341 },
-    { date: "10-04-2026", revenue: 81.60, impressions: 12280, clicks: 328 },
-    { date: "11-04-2026", revenue: 35.00, impressions: 4210, clicks: 190 },
-  ],
-  recent_activity: [
-    {
-      date: "11-04-2026",
+    dashboard_data: {
+      today: {
+        date: latestEntry.date,
+        revenue: latestEntry.revenue,
+        impressions: latestEntry.impressions,
+        clicks: latestEntry.clicks,
+        ctr: 1.77,
+        ecpm: latestEntry.ecpm,
+      },
+      this_month: calcs.thisMonth,
+      last_6_month: calcs.last6Months,
+    },
+    statistics_report: RAW_DATA.map((entry) => ({
+      date: entry.date,
+      revenue: entry.revenue,
+      impressions: entry.impressions,
+      clicks: entry.clicks,
+    })),
+    recent_activity: [...RAW_DATA].reverse().map((entry) => ({
+      date: entry.date,
       domain: "fancydiamondchain.com",
-      impressions: 4210,
-      clicks: 190,
+      impressions: entry.impressions,
+      clicks: entry.clicks,
       ctr: 1.77,
-      ecpm: 85.00,
-      revenue: 35.00,
+      ecpm: entry.ecpm,
+      revenue: entry.revenue,
+    })),
+    balance: {
+      available_balance: calcs.availableBalance,
     },
-    {
-      date: "10-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12280,
-      clicks: 328,
-      ctr: 1.77,
-      ecpm: 84.30,
-      revenue: 81.60,
+    payments: {
+      available_balance: calcs.availableBalance,
+      total_earnings: calcs.totalRevenue,
+      next_withdrawal: "14-04-2026",
     },
-    {
-      date: "09-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12385,
-      clicks: 341,
-      ctr: 1.77,
-      ecpm: 85.00,
-      revenue: 82.00,
+    withdrawal: {
+      status: "Eligible",
+      available_balance: calcs.availableBalance,
+      pending: {
+        amount: 0,
+        request_date: "",
+        processing_time: "",
+      },
+      next_withdrawal_date: "14-04-2026",
     },
-    {
-      date: "08-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12300,
-      clicks: 335,
-      ctr: 1.77,
-      ecpm: 84.50,
-      revenue: 81.75,
+    withdrawal_widget: {
+      show: true,
+      status: "Eligible",
+      message: "You can withdraw now",
     },
-    {
-      date: "07-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12250,
-      clicks: 330,
-      ctr: 1.77,
-      ecpm: 84.10,
-      revenue: 82.10,
+    withdrawal_history: RAW_WITHDRAWALS.map((entry) => ({
+      id: entry.id,
+      date: entry.date,
+      amount: entry.amount,
+      method: entry.method,
+      status: entry.status,
+    })),
+    charts: {
+      revenue_chart: RAW_DATA.map((entry) => ({
+        date: entry.date,
+        value: entry.revenue,
+      })),
+      impressions_chart: RAW_DATA.map((entry) => ({
+        date: entry.date,
+        value: entry.impressions,
+      })),
+      clicks_chart: RAW_DATA.map((entry) => ({
+        date: entry.date,
+        value: entry.clicks,
+      })),
+      ecpm_chart: RAW_DATA.map((entry) => ({
+        date: entry.date,
+        value: entry.ecpm,
+      })),
     },
-    {
-      date: "06-04-2026",
-      domain: "fancydiamondchain.com",
-      impressions: 12110,
-      clicks: 320,
-      ctr: 1.77,
-      ecpm: 83.20,
-      revenue: 81.20,
-    },
-  ],
-  balance: {
-    available_balance: 843.65,
-  },
-  payments: {
-    available_balance: 843.65,
-    total_earnings: 843.65,
-    next_withdrawal: "14-04-2026",
-  },
-  withdrawal: {
-    status: "Eligible",
-    available_balance: 843.65,
-    pending: {
-      amount: 0,
-      request_date: "",
-      processing_time: "",
-    },
-    next_withdrawal_date: "14-04-2026",
-  },
-  withdrawal_widget: {
-    show: true,
-    status: "Eligible",
-    message: "You can withdraw now",
-  },
-  withdrawal_history: [
-    {
-      id: "WD-2903",
-      date: "29-03-2026",
-      amount: 1055.00,
-      method: "Payoneer",
-      status: "Complete",
-    },
-  ],
-  charts: {
-    revenue_chart: [
-      { date: "06-04-2026", value: 81.20 },
-      { date: "07-04-2026", value: 82.10 },
-      { date: "08-04-2026", value: 81.75 },
-      { date: "09-04-2026", value: 82.00 },
-      { date: "10-04-2026", value: 81.60 },
-      { date: "11-04-2026", value: 35.00 },
-    ],
-    impressions_chart: [
-      { date: "06-04-2026", value: 12110 },
-      { date: "07-04-2026", value: 12250 },
-      { date: "08-04-2026", value: 12300 },
-      { date: "09-04-2026", value: 12385 },
-      { date: "10-04-2026", value: 12280 },
-      { date: "11-04-2026", value: 4210 },
-    ],
-    clicks_chart: [
-      { date: "06-04-2026", value: 320 },
-      { date: "07-04-2026", value: 330 },
-      { date: "08-04-2026", value: 335 },
-      { date: "09-04-2026", value: 341 },
-      { date: "10-04-2026", value: 328 },
-      { date: "11-04-2026", value: 190 },
-    ],
-    ecpm_chart: [
-      { date: "06-04-2026", value: 83.20 },
-      { date: "07-04-2026", value: 84.10 },
-      { date: "08-04-2026", value: 84.50 },
-      { date: "09-04-2026", value: 85.00 },
-      { date: "10-04-2026", value: 84.30 },
-      { date: "11-04-2026", value: 85.00 },
-    ],
-  },
+    _rawData: RAW_DATA,
+    _rawWithdrawals: RAW_WITHDRAWALS,
+  }
+}
+
+// INITIAL CONFIG - AUTO_SYNC_SYSTEM MODE
+export const DEFAULT_CONFIG: DashboardConfig = createConfigWithAutoCalculations()
+
+/**
+ * Update raw data and recalculate all dashboard values
+ * Ensures all sections stay in sync
+ */
+export function updateDashboardData(newData: DataEntry[], newWithdrawals?: WithdrawalEntry[]): DashboardConfig {
+  // Update internal raw data
+  let i = 0
+  for (; i < newData.length; i++) {
+    RAW_DATA[i] = newData[i]
+  }
+  RAW_DATA.length = newData.length
+
+  if (newWithdrawals) {
+    let j = 0
+    for (; j < newWithdrawals.length; j++) {
+      RAW_WITHDRAWALS[j] = newWithdrawals[j]
+    }
+    RAW_WITHDRAWALS.length = newWithdrawals.length
+  }
+
+  // Recalculate and return new config
+  const updatedConfig = createConfigWithAutoCalculations()
+  saveDashboardConfig(updatedConfig)
+  return updatedConfig
 }
 
 // Configuration management utility functions
