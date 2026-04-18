@@ -140,8 +140,15 @@ const RAW_WITHDRAWALS: WithdrawalEntry[] = [
   {
     id: "WD-2903",
     date: "29-03-2026",
-    amount: 1055.00,
+    amount: 1320.55,
     status: "Completed",
+    method: "Payoneer",
+  },
+  {
+    id: "WD-1404",
+    date: "14-04-2026",
+    amount: 1210.44,
+    status: "Pending",
     method: "Payoneer",
   },
 ]
@@ -163,15 +170,15 @@ function createConfigWithAutoCalculations(): DashboardConfig {
     },
     dashboard_data: {
       today: {
-        date: latestEntry.date,
-        revenue: latestEntry.revenue,
-        impressions: latestEntry.impressions,
-        clicks: latestEntry.clicks,
-        ctr: 1.77,
-        ecpm: latestEntry.ecpm,
+        date: "18-04-2026",
+        revenue: 55.00,
+        impressions: 8310,
+        clicks: 280,
+        ctr: 8.50,
+        ecpm: 85.00,
       },
-      this_month: calcs.thisMonth,
-      last_6_month: calcs.last6Months,
+      this_month: 1670,
+      last_6_month: 3180,
     },
     statistics_report: RAW_DATA.map((entry) => ({
       date: entry.date,
@@ -179,40 +186,36 @@ function createConfigWithAutoCalculations(): DashboardConfig {
       impressions: entry.impressions,
       clicks: entry.clicks,
     })),
-    recent_activity: [...RAW_DATA]
-      .reverse()
-      .filter((entry) => entry.date.endsWith("-04-2026"))
-      .map((entry) => ({
-        date: entry.date,
-        domain: "fancydiamondchain.com",
-        impressions: entry.impressions,
-        clicks: entry.clicks,
-        ctr: 1.77,
-        ecpm: entry.ecpm,
-        revenue: entry.revenue,
-      })),
+    recent_activity: [
+      { date: "18-04-2026", domain: "fancydiamondchain.com", impressions: 8310, clicks: 280, ctr: 8.7, ecpm: 85.00, revenue: 55.00 },
+      { date: "17-04-2026", domain: "fancydiamondchain.com", impressions: 8000, clicks: 270, ctr: 8.5, ecpm: 84.50, revenue: 84.00 },
+      { date: "16-04-2026", domain: "fancydiamondchain.com", impressions: 7950, clicks: 268, ctr: 8.4, ecpm: 84.20, revenue: 82.80 },
+      { date: "15-04-2026", domain: "fancydiamondchain.com", impressions: 8100, clicks: 275, ctr: 8.6, ecpm: 84.80, revenue: 83.20 },
+      { date: "14-04-2026", domain: "fancydiamondchain.com", impressions: 8200, clicks: 280, ctr: 8.8, ecpm: 85.10, revenue: 85.00 },
+      { date: "13-04-2026", domain: "fancydiamondchain.com", impressions: 8150, clicks: 277, ctr: 8.7, ecpm: 85.00, revenue: 84.50 },
+    ],
     balance: {
-      available_balance: calcs.availableBalance,
+      available_balance: 1847,
     },
     payments: {
-      available_balance: calcs.availableBalance,
-      total_earnings: calcs.totalRevenue,
+      available_balance: 627,
+      total_earnings: 3180,
       next_withdrawal: "14-04-2026",
     },
     withdrawal: {
-      status: "Eligible",
-      available_balance: calcs.availableBalance,
+      status: "Pending",
+      available_balance: 627,
       pending: {
-        amount: 0,
-        request_date: "",
-        processing_time: "",
+        amount: 1210.44,
+        request_date: "14-04-2026",
+        processing_time: "5-7 days",
       },
-      next_withdrawal_date: "14-04-2026",
+      next_withdrawal_date: "21-04-2026",
     },
     withdrawal_widget: {
       show: true,
-      status: "Eligible",
-      message: "You can withdraw now",
+      status: "Pending",
+      message: "Withdrawal pending - processing in 5-7 days",
     },
     withdrawal_history: RAW_WITHDRAWALS.map((entry) => ({
       id: entry.id,
