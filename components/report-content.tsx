@@ -12,10 +12,14 @@ const reportData: Array<{
   ecpm: string
   revenue: string
 }> = [
-  { date: "11-04-2026", impressions: "12,210", clicks: "335", ctr: "1.77%", ecpm: "$85.50", revenue: "$81.20" },
-  { date: "12-04-2026", impressions: "12,230", clicks: "338", ctr: "1.77%", ecpm: "$86.20", revenue: "$81.75" },
-  { date: "13-04-2026", impressions: "12,250", clicks: "340", ctr: "1.77%", ecpm: "$87.00", revenue: "$82.00" },
-  { date: "14-04-2026", impressions: "6,210", clicks: "130", ctr: "1.77%", ecpm: "$85.00", revenue: "$35.00" },
+  { date: "11-04-2026", impressions: "12,280", clicks: "341", ctr: "1.77%", ecpm: "$84.20", revenue: "$81.20" },
+  { date: "12-04-2026", impressions: "12,285", clicks: "342", ctr: "1.77%", ecpm: "$84.80", revenue: "$82.10" },
+  { date: "13-04-2026", impressions: "12,290", clicks: "343", ctr: "1.77%", ecpm: "$85.00", revenue: "$83.00" },
+  { date: "14-04-2026", impressions: "12,280", clicks: "344", ctr: "1.77%", ecpm: "$85.20", revenue: "$84.00" },
+  { date: "15-04-2026", impressions: "12,288", clicks: "345", ctr: "1.77%", ecpm: "$85.50", revenue: "$85.00" },
+  { date: "16-04-2026", impressions: "12,282", clicks: "343", ctr: "1.77%", ecpm: "$84.90", revenue: "$83.50" },
+  { date: "17-04-2026", impressions: "12,286", clicks: "342", ctr: "1.77%", ecpm: "$84.60", revenue: "$82.75" },
+  { date: "18-04-2026", impressions: "12,289", clicks: "344", ctr: "1.77%", ecpm: "$85.10", revenue: "$84.20" },
 ]
 
 const statisticsTotals = {
@@ -122,7 +126,11 @@ export function ReportContent() {
       {/* Report Table */}
       <Card className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium">Report Results - Latest (14-04-2026)</h3>
+          <h3 className="text-lg font-medium">Report Results - Latest (18-04-2026)</h3>
+          <div className="text-sm text-gray-500">
+            Generated on {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString()}
+          </div>
+        </div>
           <div className="text-sm text-gray-500">
             Generated on {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString()}
           </div>

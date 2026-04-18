@@ -89,10 +89,14 @@ export interface DashboardConfig {
 
 // Raw data - source of truth for all calculations
 const RAW_DATA: DataEntry[] = [
-  { date: "11-04-2026", revenue: 81.20, impressions: 12210, clicks: 335, ecpm: 85.50 },
-  { date: "12-04-2026", revenue: 81.75, impressions: 12230, clicks: 338, ecpm: 86.20 },
-  { date: "13-04-2026", revenue: 82.00, impressions: 12250, clicks: 340, ecpm: 87.00 },
-  { date: "14-04-2026", revenue: 35.00, impressions: 12210, clicks: 130, ecpm: 85.00 },
+  { date: "11-04-2026", revenue: 81.20, impressions: 12280, clicks: 341, ecpm: 84.20 },
+  { date: "12-04-2026", revenue: 82.10, impressions: 12285, clicks: 342, ecpm: 84.80 },
+  { date: "13-04-2026", revenue: 83.00, impressions: 12290, clicks: 343, ecpm: 85.00 },
+  { date: "14-04-2026", revenue: 84.00, impressions: 12280, clicks: 344, ecpm: 85.20 },
+  { date: "15-04-2026", revenue: 85.00, impressions: 12288, clicks: 345, ecpm: 85.50 },
+  { date: "16-04-2026", revenue: 83.50, impressions: 12282, clicks: 343, ecpm: 84.90 },
+  { date: "17-04-2026", revenue: 82.75, impressions: 12286, clicks: 342, ecpm: 84.60 },
+  { date: "18-04-2026", revenue: 84.20, impressions: 12289, clicks: 344, ecpm: 85.10 },
 ]
 
 const RAW_WITHDRAWALS: WithdrawalEntry[] = [
