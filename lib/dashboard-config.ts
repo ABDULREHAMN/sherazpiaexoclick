@@ -87,16 +87,53 @@ export interface DashboardConfig {
   _rawWithdrawals?: WithdrawalEntry[]
 }
 
-// Raw data - source of truth for all calculations
+// Raw data - source of truth for all calculations (43 days: March 7 - April 18, 2026)
 const RAW_DATA: DataEntry[] = [
-  { date: "11-04-2026", revenue: 81.20, impressions: 12280, clicks: 341, ecpm: 84.20 },
-  { date: "12-04-2026", revenue: 82.10, impressions: 12285, clicks: 342, ecpm: 84.80 },
-  { date: "13-04-2026", revenue: 83.00, impressions: 12290, clicks: 343, ecpm: 85.00 },
-  { date: "14-04-2026", revenue: 84.00, impressions: 12280, clicks: 344, ecpm: 85.20 },
-  { date: "15-04-2026", revenue: 85.00, impressions: 12288, clicks: 345, ecpm: 85.50 },
-  { date: "16-04-2026", revenue: 83.50, impressions: 12282, clicks: 343, ecpm: 84.90 },
-  { date: "17-04-2026", revenue: 82.75, impressions: 12286, clicks: 342, ecpm: 84.60 },
-  { date: "18-04-2026", revenue: 84.20, impressions: 12289, clicks: 344, ecpm: 85.10 },
+  // March 2026
+  { date: "07-03-2026", revenue: 25.20, impressions: 3200, clicks: 105, ecpm: 22.50 },
+  { date: "08-03-2026", revenue: 26.10, impressions: 3400, clicks: 108, ecpm: 23.10 },
+  { date: "09-03-2026", revenue: 24.80, impressions: 3100, clicks: 102, ecpm: 22.00 },
+  { date: "10-03-2026", revenue: 27.00, impressions: 3600, clicks: 110, ecpm: 24.00 },
+  { date: "11-03-2026", revenue: 26.50, impressions: 3500, clicks: 109, ecpm: 23.80 },
+  { date: "12-03-2026", revenue: 36.20, impressions: 10200, clicks: 260, ecpm: 45.00 },
+  { date: "13-03-2026", revenue: 38.10, impressions: 10800, clicks: 275, ecpm: 46.00 },
+  { date: "14-03-2026", revenue: 40.00, impressions: 11200, clicks: 290, ecpm: 47.50 },
+  { date: "15-03-2026", revenue: 42.00, impressions: 11800, clicks: 300, ecpm: 48.00 },
+  { date: "16-03-2026", revenue: 39.50, impressions: 11000, clicks: 285, ecpm: 46.50 },
+  { date: "17-03-2026", revenue: 41.00, impressions: 11500, clicks: 295, ecpm: 47.00 },
+  { date: "18-03-2026", revenue: 44.00, impressions: 12000, clicks: 300, ecpm: 49.00 },
+  { date: "19-03-2026", revenue: 46.20, impressions: 10500, clicks: 310, ecpm: 50.00 },
+  { date: "20-03-2026", revenue: 47.10, impressions: 11000, clicks: 312, ecpm: 52.00 },
+  { date: "21-03-2026", revenue: 48.50, impressions: 11500, clicks: 314, ecpm: 53.00 },
+  { date: "22-03-2026", revenue: 49.00, impressions: 12000, clicks: 315, ecpm: 54.00 },
+  { date: "23-03-2026", revenue: 50.00, impressions: 12500, clicks: 315, ecpm: 55.00 },
+  { date: "24-03-2026", revenue: 48.80, impressions: 11800, clicks: 313, ecpm: 54.00 },
+  { date: "25-03-2026", revenue: 49.20, impressions: 12200, clicks: 314, ecpm: 55.00 },
+  { date: "26-03-2026", revenue: 50.00, impressions: 13000, clicks: 315, ecpm: 56.00 },
+  { date: "27-03-2026", revenue: 47.80, impressions: 11000, clicks: 312, ecpm: 53.00 },
+  { date: "28-03-2026", revenue: 48.50, impressions: 11500, clicks: 314, ecpm: 54.00 },
+  { date: "29-03-2026", revenue: 49.50, impressions: 12000, clicks: 315, ecpm: 55.00 },
+  { date: "30-03-2026", revenue: 50.00, impressions: 12500, clicks: 315, ecpm: 56.00 },
+  { date: "31-03-2026", revenue: 49.80, impressions: 12300, clicks: 314, ecpm: 55.50 },
+  // April 2026
+  { date: "01-04-2026", revenue: 72.00, impressions: 12000, clicks: 330, ecpm: 76.00 },
+  { date: "02-04-2026", revenue: 73.20, impressions: 12200, clicks: 335, ecpm: 77.00 },
+  { date: "03-04-2026", revenue: 74.10, impressions: 12500, clicks: 338, ecpm: 78.00 },
+  { date: "04-04-2026", revenue: 71.80, impressions: 11800, clicks: 328, ecpm: 75.00 },
+  { date: "05-04-2026", revenue: 75.00, impressions: 13000, clicks: 340, ecpm: 79.00 },
+  { date: "06-04-2026", revenue: 73.50, impressions: 12300, clicks: 336, ecpm: 77.50 },
+  { date: "07-04-2026", revenue: 82.00, impressions: 12280, clicks: 335, ecpm: 82.00 },
+  { date: "08-04-2026", revenue: 83.00, impressions: 12300, clicks: 338, ecpm: 83.00 },
+  { date: "09-04-2026", revenue: 84.00, impressions: 12500, clicks: 340, ecpm: 84.00 },
+  { date: "10-04-2026", revenue: 81.50, impressions: 12280, clicks: 336, ecpm: 82.50 },
+  { date: "11-04-2026", revenue: 82.50, impressions: 12285, clicks: 337, ecpm: 83.50 },
+  { date: "12-04-2026", revenue: 83.50, impressions: 12290, clicks: 339, ecpm: 84.50 },
+  { date: "13-04-2026", revenue: 84.50, impressions: 12300, clicks: 340, ecpm: 85.00 },
+  { date: "14-04-2026", revenue: 85.00, impressions: 12310, clicks: 341, ecpm: 85.50 },
+  { date: "15-04-2026", revenue: 83.20, impressions: 12280, clicks: 338, ecpm: 84.20 },
+  { date: "16-04-2026", revenue: 82.80, impressions: 12290, clicks: 337, ecpm: 83.80 },
+  { date: "17-04-2026", revenue: 84.00, impressions: 12300, clicks: 339, ecpm: 84.50 },
+  { date: "18-04-2026", revenue: 85.00, impressions: 12310, clicks: 340, ecpm: 85.00 },
 ]
 
 const RAW_WITHDRAWALS: WithdrawalEntry[] = [
@@ -142,15 +179,18 @@ function createConfigWithAutoCalculations(): DashboardConfig {
       impressions: entry.impressions,
       clicks: entry.clicks,
     })),
-    recent_activity: [...RAW_DATA].reverse().map((entry) => ({
-      date: entry.date,
-      domain: "fancydiamondchain.com",
-      impressions: entry.impressions,
-      clicks: entry.clicks,
-      ctr: 1.77,
-      ecpm: entry.ecpm,
-      revenue: entry.revenue,
-    })),
+    recent_activity: [...RAW_DATA]
+      .reverse()
+      .filter((entry) => entry.date.endsWith("-04-2026"))
+      .map((entry) => ({
+        date: entry.date,
+        domain: "fancydiamondchain.com",
+        impressions: entry.impressions,
+        clicks: entry.clicks,
+        ctr: 1.77,
+        ecpm: entry.ecpm,
+        revenue: entry.revenue,
+      })),
     balance: {
       available_balance: calcs.availableBalance,
     },
